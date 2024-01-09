@@ -1,15 +1,24 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { PerformanceInfo } from "./performanceInfo.entity";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { PerformanceInfo } from './performanceInfo.entity';
 
 @Entity()
 export class Building {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    mainBuilding: string;
+  @Column()
+  mainBuilding: string;
 
-    @ManyToOne(type=>PerformanceInfo, performanceInfo => performanceInfo.buildingList,)
-    @JoinColumn()
-    performanceInfo: PerformanceInfo;
+  @ManyToOne(
+    (type) => PerformanceInfo,
+    (performanceInfo) => performanceInfo.buildingList,
+  )
+  @JoinColumn()
+  performanceInfo: PerformanceInfo;
 }

@@ -1,26 +1,25 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Recruitment } from "./recruitment.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Recruitment } from './recruitment.entity';
 
 @Entity()
-export class Recruiter{
+export class Recruiter {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  businessId: string;
 
-    @Column()
-    businessId: string;
+  @Column()
+  password: string;
 
-    @Column()
-    password: string;
+  @Column()
+  managerName: string;
 
-    @Column()
-    managerName: string;
+  @Column()
+  companyName: string;
 
-    @Column()
-    companyName: string;
-
-    @OneToMany(type=> Recruitment, recruitment => recruitment.recruiter,{
-        cascade: true,
-    })
-    recruitments: Recruitment[];
+  @OneToMany((type) => Recruitment, (recruitment) => recruitment.recruiter, {
+    cascade: true,
+  })
+  recruitments: Recruitment[];
 }
