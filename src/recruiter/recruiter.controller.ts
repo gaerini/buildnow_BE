@@ -13,11 +13,7 @@ export class RecruiterController {
     return this.recruiterService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') recruiterId: number): Promise<Recruiter> {
-    // console.log(recruiterId);
-    return this.recruiterService.findOne(recruiterId);
-  }
+
 
   @Post()
   create(@Body() createRecruiterDto: CreateRecruiterDto): Promise<void> {

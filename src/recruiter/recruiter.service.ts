@@ -16,10 +16,10 @@ export class RecruiterService {
     return this.entityManager.find(Recruiter);
   }
 
-  findOne(id: number): Promise<Recruiter | null> {
+  findOne(recruiterName: string): Promise<Recruiter | null> {
     return this.entityManager.findOne(Recruiter, {
       where: {
-        id: id,
+        businessId: recruiterName,
       },
     });
   }

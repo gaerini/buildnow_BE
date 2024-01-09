@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RecruiterModule } from './recruiter/recruiter.module';
 import { Recruiter } from './entities/recruiter.entity';
 import { Recruitment } from './entities/recruitment.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,8 @@ import { Recruitment } from './entities/recruitment.entity';
       synchronize: true,
     }),
     RecruiterModule,
+    AuthModule,
+  
   ],
   controllers: [],
   providers: [],
