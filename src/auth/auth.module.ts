@@ -6,7 +6,7 @@ import { Recruiter } from './recruiter.entity';
 import { Recruitment } from 'src/entities/recruitment.entity';
 import { RecruiterService } from './recruiter.service';
 import { JwtModule } from '@nestjs/jwt';
-import { Constant } from './auth.constant';
+import { Constant } from '../../auth.constant';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 

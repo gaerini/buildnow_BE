@@ -3,7 +3,7 @@ import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { SignUpRecruiterDto } from "./dto/signUp-recruiter.dto";
 import { RecruiterService } from "./recruiter.service";
-import { Constant } from "./auth.constant";
+import { Constant } from "../../auth.constant";
 import { Recruiter } from "./recruiter.entity";
 
 @Injectable()
