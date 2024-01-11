@@ -12,7 +12,11 @@ export class RecruitmentService {
         private em: EntityManager,
     ){}
 
-    findAll(recruiter: Recruiter): Promise<Recruitment[]>{
+    findAll(): Promise<Recruitment[]>{
+        return this.em.find(Recruitment);
+    }
+
+    findAllByRecruiter(recruiter: Recruiter): Promise<Recruitment[]>{
         return this.em.findBy(Recruitment, {
             recruiter: recruiter,
         });
@@ -21,7 +25,6 @@ export class RecruitmentService {
     async createRecruitment(createRecruitmentDto: CreateRecruitmentDto, recruiter: Recruiter): Promise<Recruitment> {
         const {deadline, workType, requirements, applyingFormat} = createRecruitmentDto;
         const newRecruitment = this.em.create(Recruitment, {deadline, workType, requirements, applyingFormat, recruiter});
-        console.log(recruiter);
         return await this.em.save(Recruitment, newRecruitment);
         
     }

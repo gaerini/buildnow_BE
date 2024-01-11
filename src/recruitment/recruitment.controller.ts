@@ -13,14 +13,18 @@ export class RecruitmentController {
         private recruitmentService: RecruitmentService,
     ){}
 
+    @Get('master')
+    findAll(): Promise<Recruitment[]>{
+        return this.recruitmentService.findAll();
+    }
+
     @Get()
-    findAll(@GetUser() recruiter:Recruiter): Promise<Recruitment[]> {
-        return this.recruitmentService.findAll(recruiter);
+    findAllByRecruiter(@GetUser() recruiter:Recruiter): Promise<Recruitment[]> {
+        return this.recruitmentService.findAllByRecruiter(recruiter);
     }
 
     @Post()
-    createRecruitment(@Req() req, @Body() createRecruitmentDto: CreateRecruitmentDto, @GetUser() recruiter: Recruiter): Promise<Recruitment> {
-        console.log(req);
+    createRecruitment(@Body() createRecruitmentDto: CreateRecruitmentDto, @GetUser() recruiter: Recruiter): Promise<Recruitment> {
         return this.recruitmentService.createRecruitment(createRecruitmentDto, recruiter);
     }
 }
