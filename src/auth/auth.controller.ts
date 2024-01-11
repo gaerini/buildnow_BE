@@ -1,13 +1,28 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { SignInDto } from 'src/dto/signin.dto';
+import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { SignUpRecruiterDto } from './dto/signUp-recruiter.dto';
+import { SignInDto } from './dto/signIn.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { GetRecruiter } from './get-recruiter.decorator';
+import { Recruiter } from './recruiter.entity';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private authService: AuthService) {}
-    @HttpCode(HttpStatus.OK)
-    @Post('login')
-    signIn(@Body() signInDto: SignInDto){
-        return this.authService.signIn(signInDto.businessId, signInDto.password);
+    constructor (private authService: AuthService){}
+
+    @Post('signup')
+    signUp(@Body() signUpRecruiterDto: SignUpRecruiterDto): Promise<void>{
+        return this.authService.signUp(signUpRecruiterDto);
+    }
+
+    @Post('signin')
+    signIn(@Body() signInDto: SignInDto): Promise<{accessToken: string}>{
+        return this.authService.signIn(signInDto);
+    }
+
+    @Post('test')
+    @UseGuards(AuthGuard())
+    test(@GetRecruiter() recruiter: Recruiter){
+        console.log('recruiter', recruiter);
     }
 }

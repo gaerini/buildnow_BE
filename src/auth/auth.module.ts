@@ -1,21 +1,25 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { RecruiterModule } from 'src/recruiter/recruiter.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Recruiter } from 'src/entities/recruiter.entity';
-import { RecruiterService } from 'src/recruiter/recruiter.service';
+import { Recruiter } from './recruiter.entity';
+import { Recruitment } from 'src/entities/recruitment.entity';
+import { RecruiterService } from './recruiter.service';
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from './constant';
+import { Constant } from './auth.constant';
+import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Recruiter]),
-  JwtModule.register({
-    global: true,
-    secret: jwtConstants.secret,
-    signOptions: {expiresIn: '3600s'},
-  }),],
-  controllers: [AuthController],
-  providers: [AuthService, RecruiterService]
+    imports: [TypeOrmModule.forFeature([Recruiter, Recruitment]),
+JwtModule.register({
+    secret: Constant.secret,
+    signOptions: {
+        expiresIn: '3600s',
+    },
+}), PassportModule.register({ defaultStrategy: 'jwt'})],
+    controllers:[AuthController],
+    providers: [AuthService, RecruiterService, JwtStrategy],
+    exports: [JwtStrategy, PassportModule], //다른 모듈에서도 사용해야하므로 추출해야함
 })
 export class AuthModule {}

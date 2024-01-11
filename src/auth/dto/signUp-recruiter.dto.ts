@@ -1,6 +1,6 @@
 import { IsString } from "class-validator";
 
-export class CreateRecruiterDto{
+export class SignUpRecruiterDto{
     @IsString()
     readonly businessId: string;
     @IsString()

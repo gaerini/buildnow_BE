@@ -6,7 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Recruiter } from './recruiter.entity';
+import { Recruiter } from '../auth/recruiter.entity';
 import { Application } from './application.entity';
 
 @Entity()

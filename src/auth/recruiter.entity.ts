@@ -1,7 +1,8 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Recruitment } from './recruitment.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Recruitment } from '../entities/recruitment.entity';
 
 @Entity()
+@Unique(['businessId'])
 export class Recruiter {
   @PrimaryGeneratedColumn()
   id: number;
