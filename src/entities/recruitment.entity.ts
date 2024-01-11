@@ -15,7 +15,7 @@ export class Recruitment {
   id: number;
 
   @Column()
-  deadline: number;
+  deadline: string;
 
   @Column()
   workType: string;
@@ -27,11 +27,12 @@ export class Recruitment {
   applyingFormat: string;
 
   @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments)
-  @JoinColumn()
+  
   recruiter: Recruiter;
 
   @OneToMany((type) => Application, (application) => application.recruitment, {
     cascade: true,
+    eager: false,
   })
   applicationList: Application[];
 }

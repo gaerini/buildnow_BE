@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { SignUpRecruiterDto } from './dto/signUp-recruiter.dto';
 import { SignInDto } from './dto/signIn.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { GetRecruiter } from './get-recruiter.decorator';
+import { GetUser } from './get-user.decorator';
 import { Recruiter } from './recruiter.entity';
 
 @Controller('auth')
@@ -22,7 +22,7 @@ export class AuthController {
 
     @Post('test')
     @UseGuards(AuthGuard())
-    test(@GetRecruiter() recruiter: Recruiter){
+    test(@GetUser() recruiter: Recruiter){
         console.log('recruiter', recruiter);
     }
 }

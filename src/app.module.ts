@@ -8,6 +8,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { RecruiterService } from './auth/recruiter.service';
+import { RecruitmentModule } from './recruitment/recruitment.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { RecruiterService } from './auth/recruiter.service';
       synchronize: true,
     }),
     AuthModule,
+    RecruitmentModule,
 
   
   ],

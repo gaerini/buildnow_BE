@@ -10,7 +10,7 @@ import { SignInDto } from './dto/signIn.dto';
 export class RecruiterService {
   constructor(
     @InjectEntityManager()
-    private entityManager: EntityManager,
+    private em: EntityManager,
   ) {}
 
   async createRecruiter(signUpRecruiterDto: SignUpRecruiterDto): Promise<void>{
@@ -18,9 +18,9 @@ export class RecruiterService {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const recruiter =  this.entityManager.create(Recruiter, {businessId, password: hashedPassword, managerName, companyName});
+    const recruiter =  this.em.create(Recruiter, {businessId, password: hashedPassword, managerName, companyName});
     try{
-      await this.entityManager.save(recruiter);
+      await this.em.save(recruiter);
     }catch(error){ 
       if(error.code === '23505'){
         throw new ConflictException("Existing BusinessId");
@@ -31,7 +31,7 @@ export class RecruiterService {
   }
 
   async findOne(businessId: string): Promise<Recruiter>{
-    return this.entityManager.findOne(Recruiter, {
+    return this.em.findOne(Recruiter, {
       where: {businessId: businessId}
     })
   }
