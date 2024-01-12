@@ -5,19 +5,21 @@ import {
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  Unique,
 } from 'typeorm';
-import { Application } from './application.entity';
-import { Certification } from './applier_info/certification.entity';
-import { Finance } from './finance.entity';
-import { Client } from './applier_info/client.entity';
-import { Supplier } from './applier_info/supplier.entity';
-import { Patent } from './applier_info/patent.entity';
-import { License } from './applier_info/license.entity';
-import { Performance3yr } from './applier_info/perfomance3yr.entity';
-import { PaperReq } from './paperReq.entity';
-import { PerformanceInfo } from './applier_info/performance_info/performanceInfo.entity';
+import { Application } from '../../entities/application.entity';
+import { Certification } from '../../entities/applier_info/certification.entity';
+import { Finance } from '../../entities/finance.entity';
+import { Client } from '../../entities/applier_info/client.entity';
+import { Supplier } from '../../entities/applier_info/supplier.entity';
+import { Patent } from '../../entities/applier_info/patent.entity';
+import { License } from '../../entities/applier_info/license.entity';
+import { Performance3yr } from '../../entities/applier_info/perfomance3yr.entity';
+import { PaperReq } from '../../entities/paperReq.entity';
+import { PerformanceInfo } from '../../entities/applier_info/performance_info/performanceInfo.entity';
 
 @Entity()
+@Unique(['businessId'])
 export class Applier {
   @PrimaryGeneratedColumn()
   id: number;

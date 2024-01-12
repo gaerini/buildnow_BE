@@ -1,16 +1,15 @@
-import { IsString } from "class-validator";
+import { IsString } from 'class-validator';
 
 export class CreateRecruitmentDto {
-    @IsString()
-    deadline: string;
+  @IsString()
+  deadline: string;
 
-    @IsString()
-    workType: string;
+  @IsString()
+  workType: string;
 
-    @IsString()
-    requirements: string;
+  @IsString()
+  requirements: string;
 
-    @IsString()
-    applyingFormat: string;
-
+  @IsString()
+  applyingFormat: string;
 }

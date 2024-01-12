@@ -10,9 +10,9 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       transform: true,
-      forbidNonWhitelisted: true
-    })
-  )
+      forbidNonWhitelisted: true,
+    }),
+  );
   const serverConfig = config.get('server');
 
   await app.listen(serverConfig.port);

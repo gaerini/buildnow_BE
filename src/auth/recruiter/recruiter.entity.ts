@@ -1,5 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
-import { Recruitment } from '../entities/recruitment.entity';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
+import { Recruitment } from '../../entities/recruitment.entity';
 
 @Entity()
 @Unique(['businessId'])

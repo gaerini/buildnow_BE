@@ -6,6 +6,6 @@ import { AuthModule } from 'src/auth/auth.module';
 @Module({
   imports: [AuthModule],
   providers: [RecruitmentService],
-  controllers: [RecruitmentController]
+  controllers: [RecruitmentController],
 })
 export class RecruitmentModule {}

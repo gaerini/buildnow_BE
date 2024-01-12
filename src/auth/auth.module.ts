@@ -2,16 +2,18 @@ import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Recruiter } from './recruiter.entity';
+import { Recruiter } from './recruiter/recruiter.entity';
 import { Recruitment } from 'src/entities/recruitment.entity';
-import { RecruiterService } from './recruiter.service';
+import { RecruiterService } from './recruiter/recruiter.service';
 import { JwtModule } from '@nestjs/jwt';
 import { Constant } from '../../auth.constant';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
+import { Applier } from './applier/applier.entity';
+import { ApplierService } from './applier/applier.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Recruiter, Recruitment]),
+    imports: [TypeOrmModule.forFeature([Recruiter, Recruitment, Applier]),
 JwtModule.register({
     secret: Constant.secret,
     signOptions: {
@@ -19,7 +21,7 @@ JwtModule.register({
     },
 }), PassportModule.register({ defaultStrategy: 'jwt'})],
     controllers:[AuthController],
-    providers: [AuthService, RecruiterService, JwtStrategy],
+    providers: [AuthService, RecruiterService, ApplierService, JwtStrategy],
     exports: [JwtStrategy, PassportModule], //다른 모듈에서도 사용해야하므로 추출해야함
 })
 export class AuthModule {}

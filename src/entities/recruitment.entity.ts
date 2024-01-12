@@ -6,7 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Recruiter } from '../auth/recruiter.entity';
+import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { Application } from './application.entity';
 
 @Entity()
@@ -27,7 +27,6 @@ export class Recruitment {
   applyingFormat: string;
 
   @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments)
-  
   recruiter: Recruiter;
 
   @OneToMany((type) => Application, (application) => application.recruitment, {

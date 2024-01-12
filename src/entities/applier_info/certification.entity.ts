@@ -1,5 +1,5 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Applier } from '../applier.entity';
+import { Applier } from '../../auth/applier/applier.entity';
 
 @Entity()
 export class Certification {

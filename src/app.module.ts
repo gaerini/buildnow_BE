@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Recruiter } from './auth/recruiter.entity';
+import { Recruiter } from './auth/recruiter/recruiter.entity';
 import { Recruitment } from './entities/recruitment.entity';
 import { AppController } from './app.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
-import { RecruiterService } from './auth/recruiter.service';
+import { RecruiterService } from './auth/recruiter/recruiter.service';
 import { RecruitmentModule } from './recruitment/recruitment.module';
+import { ApplierService } from './auth/applier/applier.service';
 import * as config from 'config';
 
 const dbConfig = config.get('db');
@@ -27,10 +28,8 @@ const dbConfig = config.get('db');
     }),
     AuthModule,
     RecruitmentModule,
-
-  
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [ApplierService],
 })
 export class AppModule {}
