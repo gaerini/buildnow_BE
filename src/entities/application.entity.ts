@@ -30,6 +30,5 @@ export class Application {
   recruitment: Recruitment;
 
   @ManyToOne((type) => Applier, (applier) => applier.appliedList)
-  @JoinColumn()
   applier: Applier;
 }

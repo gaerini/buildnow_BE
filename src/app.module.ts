@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { RecruiterService } from './auth/recruiter/recruiter.service';
 import { RecruitmentModule } from './recruitment/recruitment.module';
 import { ApplierService } from './auth/applier/applier.service';
+import { ApplicationService } from './application/application.service';
 import * as config from 'config';
 
 const dbConfig = config.get('db');
@@ -30,6 +31,6 @@ const dbConfig = config.get('db');
     RecruitmentModule,
   ],
   controllers: [AppController],
-  providers: [ApplierService],
+  providers: [ApplierService, ApplicationService],
 })
 export class AppModule {}
