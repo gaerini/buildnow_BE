@@ -10,10 +10,9 @@ services:
       DB_HOST: pg # 호스트 이름은 services 하의 데이터베이스 이름과 같아야 한다. 
       DB_PORT: 5432
       DB_NAME: buildnow_test
-    volumes:
-      - ./src:/usr/src/app
+    
     ports:
-      - "3000:3000"
+      - "3000:80"
     depends_on:
       - pg
   pg:
