@@ -19,9 +19,9 @@ const dbConfig = config.get('db');
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: dbConfig.type,
-      host: dbConfig.host,
-      port: dbConfig.port,
+      type: process.env.DB_TYPE || dbConfig.type,
+      host: process.env.DB_HOST || dbConfig.host,
+      port: process.env.DB_PORT || dbConfig.port,
       username: process.env.POSTGRES_USER || dbConfig.username,
       password: process.env.POSTGRES_PASSWORD || dbConfig.password,
       database: process.env.POSTGRES_DB || dbConfig.database,
