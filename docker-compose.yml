@@ -11,18 +11,17 @@ services:
       DB_PORT: 5432
       DB_NAME: buildnow_test
     
-    expose:
-      - "3000"
 
     ports:
       - "3000:3000"
 
-    links:
-      - pg
     depends_on:
       - pg
   pg:
     image: postgres:latest
+    volumes:
+      - db: /var/lib/mysql
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ji-hokim
       POSTGRES_PASSWORD: 21413784
