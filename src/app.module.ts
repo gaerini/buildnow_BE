@@ -11,6 +11,7 @@ import { RecruiterService } from './auth/recruiter/recruiter.service';
 import { RecruitmentModule } from './recruitment/recruitment.module';
 import { ApplierService } from './auth/applier/applier.service';
 import { ApplicationService } from './application/application.service';
+import { ApplicationModule } from './application/application.module';
 import * as config from 'config';
 
 const dbConfig = config.get('db');
@@ -29,6 +30,7 @@ const dbConfig = config.get('db');
     }),
     AuthModule,
     RecruitmentModule,
+    ApplicationModule,
   ],
   controllers: [AppController],
   providers: [ApplierService, ApplicationService],

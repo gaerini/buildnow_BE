@@ -5,11 +5,13 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  Unique,
 } from 'typeorm';
 import { Recruitment } from './recruitment.entity';
 import { Applier } from '../auth/applier/applier.entity';
 
 @Entity()
+@Unique(['recruitment', 'applier'])
 export class Application {
   @PrimaryGeneratedColumn()
   id: number;

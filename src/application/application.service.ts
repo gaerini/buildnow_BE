@@ -1,10 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectEntityManager } from '@nestjs/typeorm';
 import { EntityManager } from 'typeorm';
-import { NewApplication } from './dto/newApplication.dto';
+import { NewApplicationDto } from './dto/newApplication.dto';
 import { Applier } from 'src/auth/applier/applier.entity';
 import { Recruitment } from 'src/entities/recruitment.entity';
 import { Application } from 'src/entities/application.entity';
+import { ApplierService } from 'src/auth/applier/applier.service';
 
 @Injectable()
 export class ApplicationService {
@@ -13,7 +14,11 @@ export class ApplicationService {
         private em: EntityManager,
     ){}
 
-    async applyToRecruitment(applierId:number, recruitmentId:number, newApplication:NewApplication): Promise<void>{
+    findAll(): Promise<Application[]>{
+        return this.em.find(Application);
+    }
+
+    async applyToRecruitment(applierId:number, recruitmentId:number, newApplicationDto:NewApplicationDto): Promise<void>{
         const applier = await this.em.findOneBy(Applier, {
             id: applierId,
         });
@@ -22,13 +27,33 @@ export class ApplicationService {
             id: recruitmentId,
         });
 
-        const application = new Application();
+        console.log(newApplicationDto);
 
-        application.isNew = newApplication.isNew;
-        application.isRecommended = newApplication.isRecomended;
-        application.applier = applier;
-        application.recruitment = recruitment;
+        const {isNew, isRecommended} = newApplicationDto;
+        let isNewBool:boolean;
+        let isRecommendedBool:boolean;
+        if(isNew === 'true'){
+            isNewBool = true;
+        }else {
+            isNewBool = false;
+        }
 
-        await this.em.save(application);
+        if(isRecommended === 'true'){
+            isRecommendedBool = true;
+        }else{
+            isRecommendedBool = false;
+        }
+        const newApplication = this.em.create(Application, {isNew: isNewBool, isRecommended: isRecommendedBool, applier:applier, recruitment: recruitment});
+
+
+        try{
+            const application = await this.em.save(newApplication);
+        }catch(error){
+            console.log(error.code);
+            if(error.code === '23505'){
+                throw new ConflictException("이미 지원한 내역")
+            }
+            throw new InternalServerErrorException();
+        }
     }
 }

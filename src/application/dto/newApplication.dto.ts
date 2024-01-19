@@ -1,8 +1,8 @@
-import { IsString } from "class-validator";
+import { IsBoolean, IsString } from "class-validator";
 
-export class NewApplication {
+export class NewApplicationDto {
     @IsString()
-    isNew: boolean;
+    isNew: string;
     @IsString()
-    isRecomended: boolean;
+    isRecommended: string;
 }
