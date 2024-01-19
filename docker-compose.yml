@@ -11,7 +11,7 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_USER: ji-hokim
-      POSTGRES_PASSWORD:
+      POSTGRES_PASSWORD: 21413784
       POSTGRES_DB: buildnow_test
     ports:
       - "5432:5432"
