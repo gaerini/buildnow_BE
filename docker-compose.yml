@@ -3,7 +3,7 @@ services:
   app:
     build: .
     ports:
-      - "80:3000"
+      - "3000:3000"
     environment: # node 환경변수 주입. 따로 .env 파일을 작성할 필요 없이 여기다 환경변수 값들을 셋팅할 수도 있다.
       DB_USER: ji-hokim 
       DB_PWD: "21413784"
