@@ -11,8 +11,11 @@ services:
       DB_PORT: 5432
       DB_NAME: buildnow_test
     
+    expose:
+      - "3000"
+
     ports:
-      - "3000:80"
+      - "80:3000"
 
     links:
       - pg
