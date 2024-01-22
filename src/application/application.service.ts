@@ -1,17 +1,20 @@
 import { ConflictException, ForbiddenException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectEntityManager } from '@nestjs/typeorm';
-import { EntityManager } from 'typeorm';
+import { DataSource, EntityManager } from 'typeorm';
 import { NewApplicationDto } from './dto/newApplication.dto';
 import { Applier } from 'src/auth/applier/applier.entity';
 import { Recruitment } from 'src/entities/recruitment.entity';
 import { Application } from 'src/entities/application.entity';
 import { ApplierService } from 'src/auth/applier/applier.service';
+import { ScoreBoard } from 'src/entities/scoreBoard.entity';
 
 @Injectable()
 export class ApplicationService {
     constructor(
         @InjectEntityManager()
         private em: EntityManager,
+
+        private dataSource: DataSource,
     ){}
 
     findAll(): Promise<Application[]>{
@@ -55,5 +58,9 @@ export class ApplicationService {
             }
             throw new InternalServerErrorException();
         }
+    }
+
+    async findScores(applicationId: number):Promise<ScoreBoard[] | void>{
+        
     }
 }
