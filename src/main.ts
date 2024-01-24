@@ -13,6 +13,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
+  app.enableCors();
   const serverConfig = config.get('server');
 
   await app.listen(serverConfig.port);
