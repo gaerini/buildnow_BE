@@ -21,6 +21,12 @@ import { CapacityValue } from './entities/applier_info/performance_info/capacity
 import { WorkTypeRatio } from './entities/applier_info/performance_info/workTypeRatio.entity';
 import { Location } from './entities/applier_info/performance_info/location.entity';
 import { ScoreBoard } from './entities/scoreBoard.entity';
+import { RecruitmentSeeder } from './seeder/recruitment.seeder';
+import { AuthService } from './auth/auth.service';
+import { ApplierService } from './auth/applier/applier.service';
+import { RecruiterService } from './auth/recruiter/recruiter.service';
+import { JwtService } from '@nestjs/jwt';
+import { RecruitmentService } from './recruitment/recruitment.service';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
@@ -56,6 +62,13 @@ const dataSourceOptions: DataSourceOptions = {
 seeder({
   imports: [
     TypeOrmModule.forRoot(dataSourceOptions),
-    TypeOrmModule.forFeature([Recruiter]),
+    TypeOrmModule.forFeature([Recruiter, Recruitment]),
   ],
-}).run([RecruiterSeeder]);
+  providers: [
+    AuthService,
+    ApplierService,
+    RecruiterService,
+    JwtService,
+    RecruitmentService,
+  ],
+}).run([RecruiterSeeder, RecruitmentSeeder]);

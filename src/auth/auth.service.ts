@@ -22,7 +22,9 @@ export class AuthService {
     return this.recruiterService.createRecruiter(signUpRecruiterDto);
   }
 
-  async signInRecruiter(signInDto: SignInDto): Promise<{ accessToken: string }> {
+  async signInRecruiter(
+    signInDto: SignInDto,
+  ): Promise<{ accessToken: string }> {
     const { businessId, password } = signInDto;
     const recruiter = await this.recruiterService.findOne(businessId);
 
@@ -37,24 +39,28 @@ export class AuthService {
     }
   }
 
-  findAllApplier(): Promise<Applier[]>{
+  findAllApplier(): Promise<Applier[]> {
     return this.applierService.findAll();
   }
 
-  async signUpApplier(signUpApplierDto: SignUpApplierDto): Promise<void>{
+  async signUpApplier(signUpApplierDto: SignUpApplierDto): Promise<void> {
     return this.applierService.createApplier(signUpApplierDto);
   }
 
-  async signInApplier(signInDto: SignInDto): Promise<{accessToken: string}>{
-    const {businessId, password} = signInDto;
+  async signInApplier(signInDto: SignInDto): Promise<{ accessToken: string }> {
+    const { businessId, password } = signInDto;
     const applier = await this.applierService.findOne(businessId);
 
-    if(applier && await bcrypt.compare(password, applier.password)){
-        const payload = {businessId, userType: 'applier'};
-        const accessToken = await this.jwtService.sign(payload);
-        return { accessToken };
+    if (applier && (await bcrypt.compare(password, applier.password))) {
+      const payload = { businessId, userType: 'applier' };
+      const accessToken = await this.jwtService.sign(payload);
+      return { accessToken };
     } else {
-        throw new UnauthorizedException('Login Failed');
+      throw new UnauthorizedException('Login Failed');
     }
+  }
+
+  findAllRecruiter(): Promise<Recruiter[]> {
+    return this.recruiterService.findAll();
   }
 }

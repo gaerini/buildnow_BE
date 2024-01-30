@@ -13,12 +13,16 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('recruiter/signup')
-  signUpRecruiter(@Body() signUpRecruiterDto: SignUpRecruiterDto): Promise<void> {
+  signUpRecruiter(
+    @Body() signUpRecruiterDto: SignUpRecruiterDto,
+  ): Promise<void> {
     return this.authService.signUpRecruiter(signUpRecruiterDto);
   }
 
   @Post('recruiter/signin')
-  signInRecruiter(@Body() signInDto: SignInDto): Promise<{ accessToken: string }> {
+  signInRecruiter(
+    @Body() signInDto: SignInDto,
+  ): Promise<{ accessToken: string }> {
     return this.authService.signInRecruiter(signInDto);
   }
 
@@ -29,17 +33,26 @@ export class AuthController {
   }
 
   @Get('applier/masterget')
-  findAll():Promise<Applier[]>{
+  @UseGuards(AuthGuard())
+  findAll(): Promise<Applier[]> {
     return this.authService.findAllApplier();
   }
 
+  @Get('recruiter/masterget')
+  @UseGuards(AuthGuard())
+  findAllRecruiter(): Promise<Recruiter[]> {
+    return this.authService.findAllRecruiter();
+  }
+
   @Post('applier/signup')
-  signUpApplier(@Body() signUpApplierDto: SignUpApplierDto): Promise<void>{
+  signUpApplier(@Body() signUpApplierDto: SignUpApplierDto): Promise<void> {
     return this.authService.signUpApplier(signUpApplierDto);
   }
 
   @Post('applier/signin')
-  signInApplier(@Body() signInDto:SignInDto): Promise<{accessToken:string}>{
+  signInApplier(
+    @Body() signInDto: SignInDto,
+  ): Promise<{ accessToken: string }> {
     return this.authService.signInApplier(signInDto);
   }
 }

@@ -1,6 +1,0 @@
-db:
-  host: 'localhost'
-  username: 'ji-hokim'
-  password: ''
-  synchronize: true
-

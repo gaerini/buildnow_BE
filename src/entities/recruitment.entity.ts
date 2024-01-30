@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { Application } from './application.entity';
+import { Grading } from './grading.entity';
 
 @Entity()
 export class Recruitment {
@@ -20,13 +21,12 @@ export class Recruitment {
   @Column()
   workType: string;
 
-  @Column()
-  requirements: string;
+  @Column('text', { array: true })
+  requirements: string[];
 
-  @Column()
-  applyingFormat: string;
-
-  @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments)
+  @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments, {
+    onDelete: 'CASCADE',
+  })
   recruiter: Recruiter;
 
   @OneToMany((type) => Application, (application) => application.recruitment, {
@@ -34,4 +34,9 @@ export class Recruitment {
     eager: false,
   })
   applicationList: Application[];
+
+  @OneToMany((type) => Grading, (grading) => grading.recruitment, {
+    cascade: true,
+  })
+  GradingList: Grading[];
 }

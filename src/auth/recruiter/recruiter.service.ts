@@ -46,4 +46,8 @@ export class RecruiterService {
       where: { businessId: businessId },
     });
   }
+
+  async findAll(): Promise<Recruiter[]> {
+    return await this.em.find(Recruiter);
+  }
 }

@@ -1,15 +1,15 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsString } from 'class-validator';
 
 export class NewScores {
-    @IsString()
-    upperCategory: string;
+  @IsString()
+  upperCategory: string;
 
-    @IsString()
-    category: string;
+  @IsString()
+  category: string;
 
-    @IsString()
-    data: string;
+  @IsString()
+  data: string;
 
-    @IsString()
-    score: string;
+  @IsString()
+  score: number;
 }

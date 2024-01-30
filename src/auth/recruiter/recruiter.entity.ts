@@ -26,7 +26,6 @@ export class Recruiter {
   companyName: string;
 
   @OneToMany((type) => Recruitment, (recruitment) => recruitment.recruiter, {
-    cascade: true,
     eager: true,
   })
   recruitments: Recruitment[];

@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
 
 export class CreateRecruitmentDto {
   @IsString()
@@ -7,9 +7,6 @@ export class CreateRecruitmentDto {
   @IsString()
   workType: string;
 
-  @IsString()
-  requirements: string;
-
-  @IsString()
-  applyingFormat: string;
+  @IsArray()
+  requirements: string[];
 }

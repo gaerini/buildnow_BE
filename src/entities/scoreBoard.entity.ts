@@ -1,24 +1,26 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Unique } from "typeorm";
-import { Application } from "./application.entity";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
+import { Application } from './application.entity';
+import { Grading } from './grading.entity';
 
 @Entity()
-@Unique(["category", "application"])
+@Unique(['application'])
 export class ScoreBoard {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    upperCategory: string;
+  @Column()
+  score: number;
 
-    @Column()
-    category: string;
+  @ManyToOne((type) => Application, (application) => application.scoreList)
+  application: Application;
 
-    @Column()
-    data: string;
-
-    @Column()
-    score: string;
-
-    @ManyToOne(type => Application, application => application.scoreList)
-    application: Application;
+  @OneToOne(() => Grading, (grading) => grading.scoreBoard, {})
+  grading: Grading;
 }
