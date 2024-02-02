@@ -1,13 +1,16 @@
-import { InjectEntityManager } from '@nestjs/typeorm';
+import { InjectDataSource, InjectEntityManager } from '@nestjs/typeorm';
 import { Seeder } from 'nestjs-seeder';
 import { DataSource, EntityManager } from 'typeorm';
 import applierData from './seedingData/applier.json';
-import { Applier } from 'src/auth/applier/applier.entity';
-import { History } from 'src/entities/applier_info/history.entity';
+import { Applier } from '../auth/applier/applier.entity';
+import { History } from '../entities/applier_info/history.entity';
 import { InternalServerErrorException } from '@nestjs/common';
 
 export class HistorySeeder implements Seeder {
-  constructor(private dataSource: DataSource) {}
+  constructor(
+    @InjectDataSource()
+    private dataSource: DataSource,
+  ) {}
 
   async seed(): Promise<any> {
     const queryRunner = this.dataSource.createQueryRunner();

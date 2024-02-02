@@ -1,4 +1,4 @@
-import { Applier } from 'src/auth/applier/applier.entity';
+import { Applier } from '../../auth/applier/applier.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

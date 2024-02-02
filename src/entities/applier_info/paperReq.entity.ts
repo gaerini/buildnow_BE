@@ -1,4 +1,4 @@
-import { Applier } from 'src/auth/applier/applier.entity';
+import { Applier } from '../../auth/applier/applier.entity';
 import {
   Column,
   Entity,
@@ -17,7 +17,7 @@ export class PaperReq {
   documentName: string;
 
   @Column()
-  documentURL: string;
+  documentUrl: string;
 
   @ManyToOne((type) => Applier, (applier) => applier.paperReqList)
   applier: Applier;

@@ -9,7 +9,7 @@
     "mangerPhoneNum": "010-1234-1234",
     "managerEmail": "kong@kong.ac.kr",
     "corporateApplicationNum": "0987-65432",
-    "workType": "철근콘크리트",
+    "esg": true,
     "history": [
       [
         "2003-10-04",
@@ -19,7 +19,107 @@
       ["2011-08-01", "우짤래미 저짤래미"],
       ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
       ["2022-01-01", "I recieved the king"]
-    ]
+    ],
+    "possibleWorkType": [
+      { "workType": "철근", "isApply": true },
+      { "workType": "콘크리트", "isApply": false }
+    ],
+    "paperReq": [
+      {
+        "documentName": "지명원",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "경영상태확인원",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "법인등기부등본",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "사업자등록증",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설업등록증",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "인감증명서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "시국세완납증명서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설산업기본법에의한제재처분확인서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "ISO-9001",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "특허-1020190064990",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "시공능력순위확인서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설공사실적확인서(최근3년간)",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "신용평가보고서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "기술인력리스트",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설기술인경력수첩",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      }
+    ],
+    "capacityValue": [
+      {
+        "workType": "철근",
+        "year1Value": 1000,
+        "year2Value": 2000,
+        "year3Value": 3000,
+        "nationalRanking": 1,
+        "regionalRanking": 1,
+        "nationalRankingRatio": 100,
+        "regionalRankingRatio": 100
+      },
+      {
+        "workType": "콘크리트",
+        "year1Value": 1000,
+        "year2Value": 2000,
+        "year3Value": 3000,
+        "nationalRanking": 2,
+        "regionalRanking": 2,
+        "nationalRankingRatio": 99,
+        "regionalRankingRatio": 99
+      }
+    ],
+    "finance": {
+      "creditGrade": "AA",
+      "cashFlowGrade": "B",
+      "watchGrade": "BB-",
+      "salesRevenue": 3000,
+      "operatingMarginRatio": 50,
+      "netProfitMarginRatio": 40,
+      "currentRatio": 10,
+      "quickRatio": 40,
+      "debtToEquityRatio": 30,
+      "debtDependency": 10
+    }
   },
   {
     "businessId": "34-56-678901",
@@ -31,7 +131,7 @@
     "mangerPhoneNum": "010-1234-1234",
     "managerEmail": "kong@kong.ac.kr",
     "corporateApplicationNum": "0987-65432",
-    "workType": "철근콘크리트",
+    "esg": false,
     "history": [
       [
         "2003-10-04",
@@ -41,7 +141,111 @@
       ["2011-08-01", "우짤래미 저짤래미"],
       ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
       ["2022-01-01", "I recieved the king"]
-    ]
+    ],
+    "possibleWorkType": [
+      { "workType": "철근", "isApply": true },
+      { "workType": "철골", "isApply": false }
+    ],
+    "paperReq": [
+      {
+        "documentName": "지명원",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "경영상태확인원",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "법인등기부등본",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "사업자등록증",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설업등록증",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "인감증명서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "시국세완납증명서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설산업기본법에의한제재처분확인서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "ISO-14001",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "ISO-9001",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "특허-1020190064990",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "시공능력순위확인서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설공사실적확인서(최근3년간)",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "신용평가보고서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "기술인력리스트",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설기술인경력수첩",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      }
+    ],
+    "capacityValue": [
+      {
+        "workType": "철근",
+        "year1Value": 1000,
+        "year2Value": 2000,
+        "year3Value": 3000,
+        "nationalRanking": 3,
+        "regionalRanking": 3,
+        "nationalRankingRatio": 99,
+        "regionalRankingRatio": 80
+      },
+      {
+        "workType": "철골",
+        "year1Value": 1000,
+        "year2Value": 2000,
+        "year3Value": 3000,
+        "nationalRanking": 4,
+        "regionalRanking": 4,
+        "nationalRankingRatio": 90,
+        "regionalRankingRatio": 87
+      }
+    ],
+    "finance": {
+      "creditGrade": "AA",
+      "cashFlowGrade": "B",
+      "watchGrade": "BB-",
+      "salesRevenue": 3000,
+      "operatingMarginRatio": 50,
+      "netProfitMarginRatio": 40,
+      "currentRatio": 10,
+      "quickRatio": 40,
+      "debtToEquityRatio": 30,
+      "debtDependency": 10
+    }
   },
   {
     "businessId": "45-56-678901",
@@ -53,7 +257,7 @@
     "mangerPhoneNum": "010-1234-1234",
     "managerEmail": "kong@kong.ac.kr",
     "corporateApplicationNum": "0987-65432",
-    "workType": "철근콘크리트",
+    "esg": true,
     "history": [
       [
         "2003-10-04",
@@ -63,6 +267,102 @@
       ["2011-08-01", "우짤래미 저짤래미"],
       ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
       ["2022-01-01", "I recieved the king"]
-    ]
+    ],
+    "possibleWorkType": [
+      { "workType": "미장", "isApply": true },
+      { "workType": "콘크리트", "isApply": false }
+    ],
+    "paperReq": [
+      {
+        "documentName": "지명원",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "경영상태확인원",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "법인등기부등본",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "사업자등록증",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설업등록증",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "인감증명서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "시국세완납증명서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설산업기본법에의한제재처분확인서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "특허-1020190064990",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "시공능력순위확인서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설공사실적확인서(최근3년간)",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "신용평가보고서",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "기술인력리스트",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      },
+      {
+        "documentName": "건설기술인경력수첩",
+        "documentUrl": "https://buildnowtestbucket.s3.ap-northeast-2.amazonaws.com/%E1%84%87%E1%85%A5%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%83%E1%85%B3%E1%86%BC%E1%84%80%E1%85%B5%E1%84%87%E1%85%AE%E1%84%83%E1%85%B3%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf"
+      }
+    ],
+    "capacityValue": [
+      {
+        "workType": "미장",
+        "year1Value": 1000,
+        "year2Value": 2000,
+        "year3Value": 3000,
+        "nationalRanking": 1,
+        "regionalRanking": 1,
+        "nationalRankingRatio": 100,
+        "regionalRankingRatio": 100
+      },
+      {
+        "workType": "콘크리트",
+        "year1Value": 1000,
+        "year2Value": 2000,
+        "year3Value": 3000,
+        "nationalRanking": 2,
+        "regionalRanking": 2,
+        "nationalRankingRatio": 99,
+        "regionalRankingRatio": 99
+      }
+    ],
+    "finance": {
+      "creditGrade": "AA",
+      "cashFlowGrade": "B",
+      "watchGrade": "BB-",
+      "salesRevenue": 3000,
+      "operatingMarginRatio": 50,
+      "netProfitMarginRatio": 40,
+      "currentRatio": 10,
+      "quickRatio": 40,
+      "debtToEquityRatio": 30,
+      "debtDependency": 10
+    }
   }
 ]

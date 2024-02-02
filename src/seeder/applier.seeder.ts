@@ -1,9 +1,9 @@
 import { Seeder } from 'nestjs-seeder';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 import applierData from './seedingData/applier.json';
 import { InjectEntityManager } from '@nestjs/typeorm';
 import { EntityManager } from 'typeorm';
-import { Applier } from 'src/auth/applier/applier.entity';
+import { Applier } from '../auth/applier/applier.entity';
 export class ApplierSeeder implements Seeder {
   constructor(
     @InjectEntityManager()
@@ -22,7 +22,7 @@ export class ApplierSeeder implements Seeder {
       const managerPhoneNum = temp.mangerPhoneNum;
       const managerEmail = temp.managerEmail;
       const corporateApplicationNum = temp.corporateApplicationNum;
-      const workType = temp.workType;
+      const esg = temp.esg;
       await this.authService.signUpApplier({
         businessId,
         password,
@@ -33,6 +33,7 @@ export class ApplierSeeder implements Seeder {
         managerPhoneNum,
         managerEmail,
         corporateApplicationNum,
+        esg,
       });
     }
   }

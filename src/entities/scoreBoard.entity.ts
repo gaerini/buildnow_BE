@@ -6,11 +6,9 @@ import {
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
-import { Application } from './application.entity';
 import { UpperCategoryScoreBoard } from './upperCategoryScoreBoard.entity';
 
 @Entity()
-@Unique(['application'])
 export class ScoreBoard {
   @PrimaryGeneratedColumn()
   id: number;

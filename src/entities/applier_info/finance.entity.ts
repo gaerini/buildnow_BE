@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Applier } from '../../auth/applier/applier.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Finance {
@@ -34,4 +35,7 @@ export class Finance {
 
   @Column()
   debtDependency: number;
+
+  @ManyToOne((type) => Applier, (applier) => applier.financeList)
+  applier: Applier;
 }

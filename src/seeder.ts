@@ -24,6 +24,10 @@ import { Grading } from './entities/grading.entity';
 import { UpperCategoryGrading } from './entities/upperCategoryGrading.entity';
 import { UpperCategoryScoreBoard } from './entities/upperCategoryScoreBoard.entity';
 import { PossibleWorkType } from './entities/applier_info/possibleWorkType.entity';
+import { WorkTypeSeeder } from './seeder/workType.seeder';
+import { CapacityValueSeeder } from './seeder/capacityValue.seeder';
+import { PaperReqSeeder } from './seeder/paperReq.seeder';
+import { ApplicationSeeder } from './seeder/application.seeder';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
@@ -37,14 +41,9 @@ const dataSourceOptions: DataSourceOptions = {
     Recruitment,
     Application,
     Applier,
-
     Finance,
-
     PaperReq,
-
     CapacityValue,
-    Location,
-
     ScoreBoard,
     History,
     Grading,
@@ -58,7 +57,21 @@ const dataSourceOptions: DataSourceOptions = {
 seeder({
   imports: [
     TypeOrmModule.forRoot(dataSourceOptions),
-    TypeOrmModule.forFeature([Recruiter, Recruitment]),
+    TypeOrmModule.forFeature([
+      Recruiter,
+      Recruitment,
+      Application,
+      Applier,
+      Finance,
+      PaperReq,
+      CapacityValue,
+      ScoreBoard,
+      History,
+      Grading,
+      UpperCategoryGrading,
+      UpperCategoryScoreBoard,
+      PossibleWorkType,
+    ]),
   ],
   providers: [
     AuthService,
@@ -72,5 +85,9 @@ seeder({
   RecruitmentSeeder,
   GradingSeeder,
   ApplierSeeder,
+  ApplicationSeeder,
   HistorySeeder,
+  WorkTypeSeeder,
+  CapacityValueSeeder,
+  PaperReqSeeder,
 ]);

@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { Application } from './application.entity';
-import { Grading } from './grading.entity';
 import { UpperCategoryGrading } from './upperCategoryGrading.entity';
 
 @Entity()
@@ -28,14 +27,11 @@ export class Recruitment {
   @Column()
   threshold: number;
 
-  @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments, {
-    onDelete: 'CASCADE',
-  })
+  @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments)
   recruiter: Recruiter;
 
   @OneToMany((type) => Application, (application) => application.recruitment, {
-    cascade: true,
-    eager: false,
+    cascade: ['remove'],
   })
   applicationList: Application[];
 
@@ -43,7 +39,7 @@ export class Recruitment {
     (type) => UpperCategoryGrading,
     (upperCategoryGrading) => upperCategoryGrading.recruitment,
     {
-      cascade: true,
+      cascade: ['remove'],
     },
   )
   upperCategoryGradingList: UpperCategoryGrading[];

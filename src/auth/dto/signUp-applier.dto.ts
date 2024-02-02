@@ -27,4 +27,6 @@ export class SignUpApplierDto {
 
   @IsString()
   corporateApplicationNum: string;
+
+  esg: boolean;
 }

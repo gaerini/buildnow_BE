@@ -6,11 +6,11 @@ import { GradingService } from './grading.service';
 export class GradingController {
   constructor(private readonly gradingService: GradingService) {}
 
-  @Post(':recruitmentId')
-  async insertGrading(
-    @Param('recruitmentId') recruitmentId: number,
-    @Body() insertGradingDto: InsertGradingDto,
-  ): Promise<void> {
-    this.gradingService.insertGrading(insertGradingDto, recruitmentId);
-  }
+  //   @Post(':recruitmentId')
+  //   async insertGrading(
+  //     @Param('recruitmentId') recruitmentId: number,
+  //     @Body() insertGradingDto: InsertGradingDto,
+  //   ): Promise<void> {
+  //     this.gradingService.insertGrading(insertGradingDto, recruitmentId);
+  //   }
 }

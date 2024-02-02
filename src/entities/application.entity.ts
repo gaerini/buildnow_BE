@@ -41,7 +41,7 @@ export class Application {
     (type) => UpperCategoryScoreBoard,
     (upperCategoryScoreBoard) => upperCategoryScoreBoard.application,
     {
-      cascade: true,
+      cascade: ['remove'],
     },
   )
   upperCategoryScoreBoardList: UpperCategoryScoreBoard[];

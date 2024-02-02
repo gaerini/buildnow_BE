@@ -1,16 +1,17 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { InjectEntityManager } from '@nestjs/typeorm';
+import { InjectDataSource, InjectEntityManager } from '@nestjs/typeorm';
 import { Seeder } from 'nestjs-seeder';
 import { Recruiter } from '../auth/recruiter/recruiter.entity';
-import { EntityManager } from 'typeorm';
+import { DataSource, EntityManager } from 'typeorm';
 import { RecruiterService } from '../auth/recruiter/recruiter.service';
 import { AuthService } from '../auth/auth.service';
+import { Recruitment } from '../entities/recruitment.entity';
 
 @Injectable()
 export class RecruiterSeeder implements Seeder {
   constructor(
-    @InjectEntityManager()
-    private em: EntityManager,
+    @InjectDataSource()
+    private dataSource: DataSource,
     private readonly authService: AuthService,
   ) {}
 
@@ -26,6 +27,19 @@ export class RecruiterSeeder implements Seeder {
   }
 
   async drop(): Promise<any> {
-    await this.em.delete(Recruiter, {});
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      await queryRunner.manager.delete(Recruitment, {});
+      await queryRunner.manager.delete(Recruiter, {});
+      await queryRunner.commitTransaction();
+    } catch (err) {
+      console.log(err);
+      await queryRunner.rollbackTransaction();
+    } finally {
+      await queryRunner.release();
+    }
   }
 }

@@ -37,6 +37,7 @@ export class ApplierService {
       managerPhoneNum,
       managerEmail,
       corporateApplicationNum,
+      esg,
     } = signUpApplierDto;
 
     const salt = await bcrypt.genSalt();
@@ -51,6 +52,7 @@ export class ApplierService {
       managerPhoneNum,
       managerEmail,
       corporateApplicationNum,
+      esg,
     });
 
     try {
@@ -59,6 +61,7 @@ export class ApplierService {
       if (error.code === '23505') {
         throw new ConflictException(`Already existing businessId`);
       } else {
+        console.log(error);
         throw new InternalServerErrorException();
       }
     }

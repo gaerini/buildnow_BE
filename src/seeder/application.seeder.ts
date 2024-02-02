@@ -1,13 +1,17 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import { Seeder } from 'nestjs-seeder';
-import { Applier } from 'src/auth/applier/applier.entity';
-import { Recruiter } from 'src/auth/recruiter/recruiter.entity';
-import { Application } from 'src/entities/application.entity';
-import { Recruitment } from 'src/entities/recruitment.entity';
+import { Applier } from '../auth/applier/applier.entity';
+import { Recruiter } from '../auth/recruiter/recruiter.entity';
+import { Application } from '../entities/application.entity';
+import { Recruitment } from '../entities/recruitment.entity';
 import { DataSource } from 'typeorm';
+import { InjectDataSource } from '@nestjs/typeorm';
 
 export class ApplicationSeeder implements Seeder {
-  constructor(private dataSource: DataSource) {}
+  constructor(
+    @InjectDataSource()
+    private dataSource: DataSource,
+  ) {}
 
   async seed(): Promise<any> {
     const queryRunner = this.dataSource.createQueryRunner();

@@ -22,8 +22,8 @@ export class UpperCategoryGrading {
   )
   recruitment: Recruitment;
 
-  @OneToMany((type) => Grading, (grading) => grading.upperCategory, {
-    cascade: true,
+  @OneToMany((type) => Grading, (grading) => grading.upperCategoryGrading, {
+    cascade: ['remove'],
   })
   gradingList: Grading[];
 }
