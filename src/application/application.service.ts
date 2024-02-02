@@ -76,76 +76,88 @@ export class ApplicationService {
     }
   }
 
-  // async findScores(applicationId: number):Promise<ScoreBoard[]>{
-  //     const application = await this.em.findOne(Application,{
-  //         where: {id: applicationId},
-  //         relations: ["scoreList"]
+  //   async findScores(applicationId: number): Promise<ScoreBoard[]> {
+  //     const application = await this.em.findOne(Application, {
+  //       where: { id: applicationId },
+  //       relations: ['scoreList'],
   //     });
-  //     if(!application){
-  //         throw new NotFoundException();
+  //     if (!application) {
+  //       throw new NotFoundException();
   //     }
   //     console.log(application.scoreList);
   //     const scoreList = application.scoreList;
   //     return scoreList;
-  // }
+  //   }
 
-  // async insertScores(applicationId: number, newScores:NewScores):Promise<void>{
+  //   async insertScores(
+  //     applicationId: number,
+  //     newScores: NewScores,
+  //   ): Promise<void> {
   //     const application = await this.em.findOneBy(Application, {
-  //         id: applicationId,
+  //       id: applicationId,
   //     });
 
-  //     if(!application){
-  //         throw new NotFoundException();
-  //     }
-  //     else{
-  //         let {upperCategory, category, data, score} = newScores;
-  //         upperCategory = this.normalizeString(upperCategory);
-  //         category = this.normalizeString(category);
-  //         const newScore = this.em.create(ScoreBoard, {upperCategory, category, data, score, application:application})
+  //     if (!application) {
+  //       throw new NotFoundException();
+  //     } else {
+  //       let { upperCategory, category, score } = newScores;
+  //       upperCategory = this.normalizeString(upperCategory);
+  //       category = this.normalizeString(category);
+  //       const newScore = this.em.create(ScoreBoard, {
+  //         upperCategory,
+  //         category,
+  //         score,
+  //         application: application,
+  //       });
 
-  //         try{
-  //             await this.em.save(newScore);
-  //         }catch(err){
-  //             // console.log(err.code);
-  //             if(err.code === '23505'){
-  //                 throw new ConflictException("이미 존재하는 항목입니다.");
-  //             }
-  //             else{
-  //                 throw new InternalServerErrorException();
-  //             }
+  //       try {
+  //         await this.em.save(newScore);
+  //       } catch (err) {
+  //         // console.log(err.code);
+  //         if (err.code === '23505') {
+  //           throw new ConflictException('이미 존재하는 항목입니다.');
+  //         } else {
+  //           throw new InternalServerErrorException();
   //         }
+  //       }
   //     }
   //     return;
-  // }
+  //   }
 
-  // async updateScores(applicationId: number, updateScoresDto: UpdateScoresDto){
-  //     // const application = await this.em.findOne(Application, {
-  //     //     where: {id: applicationId},
-  //     // })
+  //   async updateScores(applicationId: number, updateScoresDto: UpdateScoresDto) {
+  //     const application = await this.em.findOne(Application, {
+  //       where: { id: applicationId },
+  //     });
   //     console.log(updateScoresDto);
   //     const queryRunner = this.dataSource.createQueryRunner();
 
   //     await queryRunner.connect();
   //     await queryRunner.startTransaction();
 
-  //     try{
-  //         for(const newScore of updateScoresDto.scores){
-  //             await queryRunner.manager.update(ScoreBoard, {
-  //                 id: newScore.id, application: applicationId
-  //             },
-  //             {score: newScore.newScore})
-  //         }
-  //         await queryRunner.commitTransaction();
+  //     try {
+  //       for (const newScore of updateScoresDto.scores) {
+  //         await queryRunner.manager.update(
+  //           ScoreBoard,
+  //           {
+  //             id: newScore.id,
+  //             application: applicationId,
+  //           },
+  //           { score: newScore.newScore },
+  //         );
+  //       }
+  //       await queryRunner.commitTransaction();
   //     } catch (err) {
-  //         console.log(err);
-  //         await queryRunner.rollbackTransaction();
-  //         throw new InternalServerErrorException("트랜잭션 중 오류 발생, 롤백 진행완료");
+  //       console.log(err);
+  //       await queryRunner.rollbackTransaction();
+  //       throw new InternalServerErrorException(
+  //         '트랜잭션 중 오류 발생, 롤백 진행완료',
+  //       );
   //     } finally {
-  //         await queryRunner.release();
+  //       await queryRunner.release();
   //     }
-  // }
+  //   }
 
-  // normalizeString(str: string): string {
-  //     return str.replace(/\s/g, '').toLowerCase();
-  // }
+  normalizeString(str: string): string {
+    return str.replace(/\s/g, '').toLowerCase();
+  }
 }

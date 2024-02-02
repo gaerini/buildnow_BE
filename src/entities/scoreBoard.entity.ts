@@ -7,7 +7,7 @@ import {
   Unique,
 } from 'typeorm';
 import { Application } from './application.entity';
-import { Grading } from './grading.entity';
+import { UpperCategoryScoreBoard } from './upperCategoryScoreBoard.entity';
 
 @Entity()
 @Unique(['application'])
@@ -16,11 +16,17 @@ export class ScoreBoard {
   id: number;
 
   @Column()
+  upperCategory: string;
+
+  @Column()
+  category: string;
+
+  @Column()
   score: number;
 
-  @ManyToOne((type) => Application, (application) => application.scoreList)
-  application: Application;
-
-  @OneToOne(() => Grading, (grading) => grading.scoreBoard, {})
-  grading: Grading;
+  @ManyToOne(
+    (type) => UpperCategoryScoreBoard,
+    (upperCategoryScoreBoard) => upperCategoryScoreBoard.scoreboardList,
+  )
+  upperCategoryScoreBoard: UpperCategoryScoreBoard;
 }

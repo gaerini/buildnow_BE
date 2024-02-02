@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { PerformanceInfo } from './performanceInfo.entity';
+import { Applier } from 'src/auth/applier/applier.entity';
 
 @Entity()
 export class CapacityValue {
@@ -36,10 +36,7 @@ export class CapacityValue {
   @Column()
   regionalRankingRatio: number;
 
-  @ManyToOne(
-    (type) => PerformanceInfo,
-    (performanceInfo) => performanceInfo.capacityValueList,
-  )
+  @ManyToOne((type) => Applier, (applier) => applier.capacityValueList)
   @JoinColumn()
-  performanceInfo: PerformanceInfo;
+  applier: Applier;
 }

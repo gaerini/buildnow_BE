@@ -6,20 +6,9 @@ import { RecruiterSeeder } from './seeder/recruiter.seeder';
 import { Recruitment } from './entities/recruitment.entity';
 import { Application } from './entities/application.entity';
 import { Applier } from './auth/applier/applier.entity';
-import { Certification } from './entities/applier_info/certification.entity';
-import { Finance } from './entities/finance.entity';
-import { Client } from './entities/applier_info/client.entity';
-import { Supplier } from './entities/applier_info/supplier.entity';
-import { Patent } from './entities/applier_info/patent.entity';
-import { License } from './entities/applier_info/license.entity';
-import { Performance3yr } from './entities/applier_info/perfomance3yr.entity';
-import { PaperReq } from './entities/paperReq.entity';
-import { PatentPaper } from './entities/patentPaper.entity';
-import { PerformanceInfo } from './entities/applier_info/performance_info/performanceInfo.entity';
-import { Building } from './entities/applier_info/performance_info/building.entity';
-import { CapacityValue } from './entities/applier_info/performance_info/capacityValue.entity';
-import { WorkTypeRatio } from './entities/applier_info/performance_info/workTypeRatio.entity';
-import { Location } from './entities/applier_info/performance_info/location.entity';
+import { Finance } from './entities/applier_info/finance.entity';
+import { PaperReq } from './entities/applier_info/paperReq.entity';
+import { CapacityValue } from './entities/applier_info/capacityValue.entity';
 import { ScoreBoard } from './entities/scoreBoard.entity';
 import { RecruitmentSeeder } from './seeder/recruitment.seeder';
 import { AuthService } from './auth/auth.service';
@@ -27,6 +16,14 @@ import { ApplierService } from './auth/applier/applier.service';
 import { RecruiterService } from './auth/recruiter/recruiter.service';
 import { JwtService } from '@nestjs/jwt';
 import { RecruitmentService } from './recruitment/recruitment.service';
+import { GradingSeeder } from './seeder/grading.seeder';
+import { ApplierSeeder } from './seeder/applier.seeder';
+import { HistorySeeder } from './seeder/history.seeder';
+import { History } from './entities/applier_info/history.entity';
+import { Grading } from './entities/grading.entity';
+import { UpperCategoryGrading } from './entities/upperCategoryGrading.entity';
+import { UpperCategoryScoreBoard } from './entities/upperCategoryScoreBoard.entity';
+import { PossibleWorkType } from './entities/applier_info/possibleWorkType.entity';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
@@ -40,21 +37,20 @@ const dataSourceOptions: DataSourceOptions = {
     Recruitment,
     Application,
     Applier,
-    Certification,
+
     Finance,
-    Client,
-    Supplier,
-    Patent,
-    License,
-    Performance3yr,
+
     PaperReq,
-    PatentPaper,
-    PerformanceInfo,
-    Building,
+
     CapacityValue,
     Location,
-    WorkTypeRatio,
+
     ScoreBoard,
+    History,
+    Grading,
+    UpperCategoryGrading,
+    UpperCategoryScoreBoard,
+    PossibleWorkType,
   ],
   synchronize: true,
 };
@@ -71,4 +67,10 @@ seeder({
     JwtService,
     RecruitmentService,
   ],
-}).run([RecruiterSeeder, RecruitmentSeeder]);
+}).run([
+  RecruiterSeeder,
+  RecruitmentSeeder,
+  GradingSeeder,
+  ApplierSeeder,
+  HistorySeeder,
+]);

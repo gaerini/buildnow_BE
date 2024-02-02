@@ -1,0 +1,68 @@
+[
+  {
+    "businessId": "23-56-678901",
+    "password": "1234",
+    "companyName": "L이앤씨",
+    "ceoName": "김대표",
+    "companyAddress": "경기도 파주시 00로 xxx, 3층",
+    "managerName": "공도웅",
+    "mangerPhoneNum": "010-1234-1234",
+    "managerEmail": "kong@kong.ac.kr",
+    "corporateApplicationNum": "0987-65432",
+    "workType": "철근콘크리트",
+    "history": [
+      [
+        "2003-10-04",
+        "(주) L 이앤씨 창립 - 전문건설업 면허취득 (철근 콘크리트 공사업 / 경기 제 00-00-000)"
+      ],
+      ["2009-03-14", "어쩔티비 저쩔티비"],
+      ["2011-08-01", "우짤래미 저짤래미"],
+      ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
+      ["2022-01-01", "I recieved the king"]
+    ]
+  },
+  {
+    "businessId": "34-56-678901",
+    "password": "1234",
+    "companyName": "AA건설",
+    "ceoName": "김대표",
+    "companyAddress": "경기도 파주시 00로 xxx, 3층",
+    "managerName": "공도웅",
+    "mangerPhoneNum": "010-1234-1234",
+    "managerEmail": "kong@kong.ac.kr",
+    "corporateApplicationNum": "0987-65432",
+    "workType": "철근콘크리트",
+    "history": [
+      [
+        "2003-10-04",
+        "(주) L 이앤씨 창립 - 전문건설업 면허취득 (철근 콘크리트 공사업 / 경기 제 00-00-000)"
+      ],
+      ["2009-03-14", "어쩔티비 저쩔티비"],
+      ["2011-08-01", "우짤래미 저짤래미"],
+      ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
+      ["2022-01-01", "I recieved the king"]
+    ]
+  },
+  {
+    "businessId": "45-56-678901",
+    "password": "1234",
+    "companyName": "B이엔씨",
+    "ceoName": "김대표",
+    "companyAddress": "경기도 파주시 00로 xxx, 3층",
+    "managerName": "공도웅",
+    "mangerPhoneNum": "010-1234-1234",
+    "managerEmail": "kong@kong.ac.kr",
+    "corporateApplicationNum": "0987-65432",
+    "workType": "철근콘크리트",
+    "history": [
+      [
+        "2003-10-04",
+        "(주) L 이앤씨 창립 - 전문건설업 면허취득 (철근 콘크리트 공사업 / 경기 제 00-00-000)"
+      ],
+      ["2009-03-14", "어쩔티비 저쩔티비"],
+      ["2011-08-01", "우짤래미 저짤래미"],
+      ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
+      ["2022-01-01", "I recieved the king"]
+    ]
+  }
+]

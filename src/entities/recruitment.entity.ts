@@ -9,6 +9,7 @@ import {
 import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { Application } from './application.entity';
 import { Grading } from './grading.entity';
+import { UpperCategoryGrading } from './upperCategoryGrading.entity';
 
 @Entity()
 export class Recruitment {
@@ -24,6 +25,9 @@ export class Recruitment {
   @Column('text', { array: true })
   requirements: string[];
 
+  @Column()
+  threshold: number;
+
   @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments, {
     onDelete: 'CASCADE',
   })
@@ -35,8 +39,12 @@ export class Recruitment {
   })
   applicationList: Application[];
 
-  @OneToMany((type) => Grading, (grading) => grading.recruitment, {
-    cascade: true,
-  })
-  GradingList: Grading[];
+  @OneToMany(
+    (type) => UpperCategoryGrading,
+    (upperCategoryGrading) => upperCategoryGrading.recruitment,
+    {
+      cascade: true,
+    },
+  )
+  upperCategoryGradingList: UpperCategoryGrading[];
 }

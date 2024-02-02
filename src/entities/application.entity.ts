@@ -11,6 +11,7 @@ import {
 import { Recruitment } from './recruitment.entity';
 import { Applier } from '../auth/applier/applier.entity';
 import { ScoreBoard } from './scoreBoard.entity';
+import { UpperCategoryScoreBoard } from './upperCategoryScoreBoard.entity';
 
 @Entity()
 @Unique(['recruitment', 'applier'])
@@ -36,6 +37,12 @@ export class Application {
   @ManyToOne((type) => Applier, (applier) => applier.appliedList)
   applier: Applier;
 
-  @OneToMany((type)=>ScoreBoard, (scoreBoard)=>scoreBoard.application)
-  scoreList: ScoreBoard[];
+  @OneToMany(
+    (type) => UpperCategoryScoreBoard,
+    (upperCategoryScoreBoard) => upperCategoryScoreBoard.application,
+    {
+      cascade: true,
+    },
+  )
+  upperCategoryScoreBoardList: UpperCategoryScoreBoard[];
 }

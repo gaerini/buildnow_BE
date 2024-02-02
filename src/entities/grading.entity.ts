@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { Recruitment } from './recruitment.entity';
 import { ScoreBoard } from './scoreBoard.entity';
+import { UpperCategoryGrading } from './upperCategoryGrading.entity';
 
 @Entity()
 @Unique(['upperCategory', 'category', 'recruitment'])
@@ -22,16 +23,14 @@ export class Grading {
   category: string;
 
   @Column()
-  perfectScore: string;
+  perfectScore: number;
 
   @Column()
-  threshold: string;
+  threshold: number;
 
-  @ManyToOne((type) => Recruitment, (recruitment) => recruitment.GradingList)
-  recruitment: Recruitment;
-
-  @OneToOne(() => ScoreBoard, (scoreBoard) => scoreBoard.grading, {
-    cascade: true,
-  })
-  scoreBoard: ScoreBoard;
+  @ManyToOne(
+    (type) => UpperCategoryGrading,
+    (upperCategoryGrading) => upperCategoryGrading.gradingList,
+  )
+  upperCategoryGrading: UpperCategoryGrading;
 }
