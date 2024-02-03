@@ -13,9 +13,6 @@ import { ApplierService } from './auth/applier/applier.service';
 import { ApplicationService } from './application/application.service';
 import { ApplicationModule } from './application/application.module';
 import { ConfigModule } from '@nestjs/config';
-import { GradingService } from './grading/grading.service';
-import { GradingController } from './grading/grading.controller';
-import { ScoreBoardService } from './score-board/score-board.service';
 
 @Module({
   imports: [
@@ -34,7 +31,7 @@ import { ScoreBoardService } from './score-board/score-board.service';
     RecruitmentModule,
     ApplicationModule,
   ],
-  controllers: [AppController, GradingController],
-  providers: [ApplierService, ApplicationService, GradingService, ScoreBoardService],
+  controllers: [AppController],
+  providers: [ApplierService, ApplicationService],
 })
 export class AppModule {}

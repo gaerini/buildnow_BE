@@ -55,24 +55,7 @@ const dataSourceOptions: DataSourceOptions = {
 };
 
 seeder({
-  imports: [
-    TypeOrmModule.forRoot(dataSourceOptions),
-    TypeOrmModule.forFeature([
-      Recruiter,
-      Recruitment,
-      Application,
-      Applier,
-      Finance,
-      PaperReq,
-      CapacityValue,
-      ScoreBoard,
-      History,
-      Grading,
-      UpperCategoryGrading,
-      UpperCategoryScoreBoard,
-      PossibleWorkType,
-    ]),
-  ],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions)],
   providers: [
     AuthService,
     ApplierService,

@@ -31,7 +31,7 @@ export class Recruitment {
   recruiter: Recruiter;
 
   @OneToMany((type) => Application, (application) => application.recruitment, {
-    cascade: ['remove'],
+    cascade: true,
   })
   applicationList: Application[];
 

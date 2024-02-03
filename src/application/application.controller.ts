@@ -4,6 +4,7 @@ import {
   Get,
   Logger,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
   UseGuards,
@@ -17,6 +18,8 @@ import { NewApplicationDto } from './dto/newApplication.dto';
 import { ScoreBoard } from 'src/entities/scoreBoard.entity';
 import { NewScores } from './dto/newScores.dto';
 import { UpdateScoresDto } from './dto/updateScores.dto';
+import { Recruiter } from 'src/auth/recruiter/recruiter.entity';
+import { Recruitment } from 'src/entities/recruitment.entity';
 
 @Controller('application')
 @UseGuards(AuthGuard())
@@ -28,6 +31,17 @@ export class ApplicationController {
   @Get('masterFindAll')
   findAll(): Promise<Application[]> {
     return this.applicationService.findAll();
+  }
+
+  @Get('getMyApplicants/:recruitmentId')
+  async findMyApplicants(
+    @GetUser() recruiter: Recruiter,
+    @Param('recruitmentId', ParseIntPipe) recruitmentId: number,
+  ): Promise<Application[]> {
+    return await this.applicationService.findMyApplicants(
+      recruiter,
+      recruitmentId,
+    );
   }
 
   @Post(':recruitmentId')
