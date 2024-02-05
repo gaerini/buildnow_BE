@@ -11,10 +11,10 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-RUN npm run seed
 # Build the application
 RUN npm run build
 
+RUN npm run seed
 # Expose the port the app runs on
 EXPOSE 3000
 
