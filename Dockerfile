@@ -19,3 +19,12 @@ EXPOSE 3000
 
 # Start the application
 CMD ["node", "dist/src/main"]
+
+# 기존 Dockerfile 내용...
+
+# Entrypoint 스크립트 복사
+COPY entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# Entrypoint 설정
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
