@@ -14,7 +14,6 @@ COPY . .
 # Build the application
 RUN npm run build
 
-RUN npm run seed
 # Expose the port the app runs on
 EXPOSE 3000
 
