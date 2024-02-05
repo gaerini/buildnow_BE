@@ -11,7 +11,7 @@ services:
       DATABASE_HOST: pg # 호스트 이름은 services 하의 데이터베이스 이름과 같아야 한다.
       DATABASE_PORT: 5432
       DATABASE_DATABASE: buildnow_test
-      DATABASE_SYNCHRONIZE: true
+      DATABASE_SYNCHRONIZE: 'true'
       PORT: 3000
     depends_on:
       - pg
