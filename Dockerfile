@@ -1,7 +1,7 @@
 # Base image
 FROM node:21
 
-RUN apt-get update && apt-get install -y netcat
+RUN apt-get update && apt-get install -y netcat-openbsd
 
 # Create app directory
 WORKDIR /usr/src/app
