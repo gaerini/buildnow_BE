@@ -4,5 +4,8 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller()
 @UseGuards(AuthGuard())
 export class AppController {
-
+    @Get()
+    hello(): string {
+        return "hello";
+    }
 }

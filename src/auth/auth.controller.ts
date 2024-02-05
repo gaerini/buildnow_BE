@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpRecruiterDto } from './dto/signUp-recruiter.dto';
 import { SignInDto } from './dto/signIn.dto';
@@ -7,18 +15,23 @@ import { GetUser } from './get-user.decorator';
 import { Recruiter } from './recruiter/recruiter.entity';
 import { SignUpApplierDto } from './dto/signUp-applier.dto';
 import { Applier } from './applier/applier.entity';
+import { ShowApplierDto } from './dto/showApplier.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('recruiter/signup')
-  signUpRecruiter(@Body() signUpRecruiterDto: SignUpRecruiterDto): Promise<void> {
+  signUpRecruiter(
+    @Body() signUpRecruiterDto: SignUpRecruiterDto,
+  ): Promise<void> {
     return this.authService.signUpRecruiter(signUpRecruiterDto);
   }
 
   @Post('recruiter/signin')
-  signInRecruiter(@Body() signInDto: SignInDto): Promise<{ accessToken: string }> {
+  signInRecruiter(
+    @Body() signInDto: SignInDto,
+  ): Promise<{ accessToken: string }> {
     return this.authService.signInRecruiter(signInDto);
   }
 
@@ -29,17 +42,36 @@ export class AuthController {
   }
 
   @Get('applier/masterget')
-  findAll():Promise<Applier[]>{
+  @UseGuards(AuthGuard())
+  findAll(): Promise<Applier[]> {
     return this.authService.findAllApplier();
   }
 
+  @Get('recruiter/masterget')
+  @UseGuards(AuthGuard())
+  findAllRecruiter(): Promise<Recruiter[]> {
+    return this.authService.findAllRecruiter();
+  }
+
   @Post('applier/signup')
-  signUpApplier(@Body() signUpApplierDto: SignUpApplierDto): Promise<void>{
+  signUpApplier(@Body() signUpApplierDto: SignUpApplierDto): Promise<void> {
     return this.authService.signUpApplier(signUpApplierDto);
   }
 
   @Post('applier/signin')
-  signInApplier(@Body() signInDto:SignInDto): Promise<{accessToken:string}>{
+  signInApplier(
+    @Body() signInDto: SignInDto,
+  ): Promise<{ accessToken: string }> {
     return this.authService.signInApplier(signInDto);
+  }
+
+  @Get('applier/:businessId')
+  @UseGuards(AuthGuard())
+  async findApplier(
+    @Param('businessId') businessId: string,
+  ): Promise<ShowApplierDto> {
+    const result = await this.authService.findApplier(businessId);
+    console.log(result);
+    return result;
   }
 }

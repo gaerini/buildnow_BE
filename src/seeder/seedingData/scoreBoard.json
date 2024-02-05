@@ -1,0 +1,191 @@
+[
+  {
+    "id": 1,
+    "scores": [
+      {
+        "upperCategory": "경영 일반",
+        "detail": [
+          { "category": "회사설립 경과 년수", "score": 3 },
+          {
+            "category": "지방 업체 (서울 경기 외) 여부",
+            "score": 2
+          },
+          {
+            "category": "산재 발생 여부",
+            "score": 4
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "재무 부문",
+        "detail": [
+          { "category": "신용 등급", "score": 9 },
+          {
+            "category": "현금흐름 등급",
+            "score": 8
+          },
+          {
+            "category": "부채비율",
+            "score": 10
+          },
+          {
+            "category": "차입금 의존도",
+            "score": 7
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "인증 현황",
+        "detail": [
+          { "category": "ESG 인증 및 평가", "score": 5 },
+          {
+            "category": "ISO 인증서 보유 여부",
+            "score": 9
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "시공 실적",
+        "detail": [
+          {
+            "category": "시공능력 평가액 순위",
+            "score": 13
+          },
+          {
+            "category": "최근 3년간 공사 실적",
+            "score": 14
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "scores": [
+      {
+        "upperCategory": "경영 일반",
+        "detail": [
+          { "category": "회사설립 경과 년수", "score": 4 },
+          {
+            "category": "지방 업체 (서울 경기 외) 여부",
+            "score": 1
+          },
+          {
+            "category": "산재 발생 여부",
+            "score": 5
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "재무 부문",
+        "detail": [
+          { "category": "신용 등급", "score": 7 },
+          {
+            "category": "현금흐름 등급",
+            "score": 9
+          },
+          {
+            "category": "부채비율",
+            "score": 9
+          },
+          {
+            "category": "차입금 의존도",
+            "score": 6
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "인증 현황",
+        "detail": [
+          { "category": "ESG 인증 및 평가", "score": 5 },
+          {
+            "category": "ISO 인증서 보유 여부",
+            "score": 8
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "시공 실적",
+        "detail": [
+          {
+            "category": "시공능력 평가액 순위",
+            "score": 8
+          },
+          {
+            "category": "최근 3년간 공사 실적",
+            "score": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "scores": [
+      {
+        "upperCategory": "경영 일반",
+        "detail": [
+          { "category": "회사설립 경과 년수", "score": 1 },
+          {
+            "category": "지방 업체 (서울 경기 외) 여부",
+            "score": 1
+          },
+          {
+            "category": "산재 발생 여부",
+            "score": 1
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "재무 부문",
+        "detail": [
+          { "category": "신용 등급", "score": 2 },
+          {
+            "category": "현금흐름 등급",
+            "score": 4
+          },
+          {
+            "category": "부채비율",
+            "score": 5
+          },
+          {
+            "category": "차입금 의존도",
+            "score": 5
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "인증 현황",
+        "detail": [
+          { "category": "ESG 인증 및 평가", "score": 2 },
+          {
+            "category": "ISO 인증서 보유 여부",
+            "score": 4
+          }
+        ]
+      },
+
+      {
+        "upperCategory": "시공 실적",
+        "detail": [
+          {
+            "category": "시공능력 평가액 순위",
+            "score": 10
+          },
+          {
+            "category": "최근 3년간 공사 실적",
+            "score": 7
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -3,9 +3,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { PerformanceInfo } from './performanceInfo.entity';
+import { PossibleWorkType } from './possibleWorkType.entity';
 
 @Entity()
 export class CapacityValue {
@@ -13,16 +14,13 @@ export class CapacityValue {
   id: number;
 
   @Column()
-  constructionType: string;
+  year1Value: number;
 
   @Column()
-  year1: number;
+  year2Value: number;
 
   @Column()
-  year2: number;
-
-  @Column()
-  year3: number;
+  year3Value: number;
 
   @Column()
   nationalRanking: number;
@@ -37,9 +35,8 @@ export class CapacityValue {
   regionalRankingRatio: number;
 
   @ManyToOne(
-    (type) => PerformanceInfo,
-    (performanceInfo) => performanceInfo.capacityValueList,
+    (type) => PossibleWorkType,
+    (possibleWorkType) => possibleWorkType.capacityValueList,
   )
-  @JoinColumn()
-  performanceInfo: PerformanceInfo;
+  possibleWorktype: PossibleWorkType;
 }

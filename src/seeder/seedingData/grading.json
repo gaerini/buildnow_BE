@@ -1,0 +1,60 @@
+[
+  {
+    "upperCategory": "경영 일반",
+    "detail": [
+      { "category": "회사설립 경과 년수", "perfectScore": 5 },
+      {
+        "category": "지방 업체 (서울 경기 외) 여부",
+        "perfectScore": 5
+      },
+      {
+        "category": "산재 발생 여부",
+        "perfectScore": 5
+      }
+    ]
+  },
+
+  {
+    "upperCategory": "재무 부문",
+    "detail": [
+      { "category": "신용 등급", "perfectScore": 10 },
+      {
+        "category": "현금흐름 등급",
+        "perfectScore": 10
+      },
+      {
+        "category": "부채비율",
+        "perfectScore": 10
+      },
+      {
+        "category": "차입금 의존도",
+        "perfectScore": 10
+      }
+    ]
+  },
+
+  {
+    "upperCategory": "인증 현황",
+    "detail": [
+      { "category": "ESG 인증 및 평가", "perfectScore": 5 },
+      {
+        "category": "ISO 인증서 보유 여부",
+        "perfectScore": 10
+      }
+    ]
+  },
+
+  {
+    "upperCategory": "시공 실적",
+    "detail": [
+      {
+        "category": "시공능력 평가액 순위",
+        "perfectScore": 15
+      },
+      {
+        "category": "최근 3년간 공사 실적",
+        "perfectScore": 15
+      }
+    ]
+  }
+]

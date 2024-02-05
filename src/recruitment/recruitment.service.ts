@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectEntityManager } from '@nestjs/typeorm';
-import { Recruitment } from 'src/entities/recruitment.entity';
+import { Recruitment } from '../entities/recruitment.entity';
 import { EntityManager } from 'typeorm';
 import { CreateRecruitmentDto } from './dto/create-recruitment.dto';
-import { Recruiter } from 'src/auth/recruiter/recruiter.entity';
+import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { NotFoundError } from 'rxjs';
 
 @Injectable()
@@ -38,13 +38,11 @@ export class RecruitmentService {
     createRecruitmentDto: CreateRecruitmentDto,
     recruiter: Recruiter,
   ): Promise<Recruitment> {
-    const { deadline, workType, requirements, applyingFormat } =
-      createRecruitmentDto;
+    const { deadline, workType, requirements } = createRecruitmentDto;
     const newRecruitment = this.em.create(Recruitment, {
       deadline,
       workType,
       requirements,
-      applyingFormat,
       recruiter,
     });
     return await this.em.save(Recruitment, newRecruitment);

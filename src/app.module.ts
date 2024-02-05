@@ -12,21 +12,20 @@ import { RecruitmentModule } from './recruitment/recruitment.module';
 import { ApplierService } from './auth/applier/applier.service';
 import { ApplicationService } from './application/application.service';
 import { ApplicationModule } from './application/application.module';
-import * as config from 'config';
-
-const dbConfig = config.get('db');
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({}),
     TypeOrmModule.forRoot({
-      type: process.env.DB_TYPE || dbConfig.type,
-      host: process.env.DB_HOST || dbConfig.host,
-      port: process.env.DB_PORT || dbConfig.port,
-      username: process.env.DB_USER || dbConfig.username,
-      password: process.env.DB_PWD || dbConfig.password,
-      database: process.env.DB_NAME || dbConfig.database,
+      type: 'postgres',
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT),
+      username: process.env.DATABASE_USERNAME,
+      password: '',
+      database: process.env.DATABASE_DATABASE,
       entities: [__dirname + '/**/*.entity.{js, ts}'],
-      synchronize: dbConfig.synchronize,
+      synchronize: process.env.DATABASE_SYNCRONIZE === 'true',
     }),
     AuthModule,
     RecruitmentModule,

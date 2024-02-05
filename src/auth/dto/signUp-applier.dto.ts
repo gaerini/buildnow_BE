@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
 
 export class SignUpApplierDto {
   @IsString()
@@ -26,14 +26,7 @@ export class SignUpApplierDto {
   managerEmail: string;
 
   @IsString()
-  businessApplicationNum: string;
-
-  @IsString()
   corporateApplicationNum: string;
 
-  @IsString()
-  workType: string;
-
-  @IsString()
-  estDate: string;
+  esg: boolean;
 }

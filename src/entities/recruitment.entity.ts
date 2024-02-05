@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { Application } from './application.entity';
+import { UpperCategoryGrading } from './upperCategoryGrading.entity';
 
 @Entity()
 export class Recruitment {
@@ -20,18 +21,26 @@ export class Recruitment {
   @Column()
   workType: string;
 
-  @Column()
-  requirements: string;
+  @Column('text', { array: true })
+  requirements: string[];
 
   @Column()
-  applyingFormat: string;
+  threshold: number;
 
   @ManyToOne((type) => Recruiter, (recruiter) => recruiter.recruitments)
   recruiter: Recruiter;
 
   @OneToMany((type) => Application, (application) => application.recruitment, {
     cascade: true,
-    eager: false,
   })
   applicationList: Application[];
+
+  @OneToMany(
+    (type) => UpperCategoryGrading,
+    (upperCategoryGrading) => upperCategoryGrading.recruitment,
+    {
+      cascade: ['remove'],
+    },
+  )
+  upperCategoryGradingList: UpperCategoryGrading[];
 }

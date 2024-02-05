@@ -4,11 +4,14 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
 import { Recruitment } from './recruitment.entity';
 import { Applier } from '../auth/applier/applier.entity';
+import { ScoreBoard } from './scoreBoard.entity';
+import { UpperCategoryScoreBoard } from './upperCategoryScoreBoard.entity';
 
 @Entity()
 @Unique(['recruitment', 'applier'])
@@ -33,4 +36,13 @@ export class Application {
 
   @ManyToOne((type) => Applier, (applier) => applier.appliedList)
   applier: Applier;
+
+  @OneToMany(
+    (type) => UpperCategoryScoreBoard,
+    (upperCategoryScoreBoard) => upperCategoryScoreBoard.application,
+    {
+      cascade: ['remove'],
+    },
+  )
+  upperCategoryScoreBoardList: UpperCategoryScoreBoard[];
 }
