@@ -33,11 +33,11 @@ import { ScoreBoardSeeder } from './seeder/scoreBoard.seeder';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  host: 'localhost',
+  host: process.env.DATABASE_HOST,
   port: 5432,
   username: 'ji-hokim',
-  password: '',
-  database: 'buildnow_test',
+  password: process.env.DATABASE_PASSWORD || '',
+  database: process.env.DATABASE_DATABASE,
   entities: [
     Recruiter,
     Recruitment,
