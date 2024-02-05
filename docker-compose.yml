@@ -5,13 +5,13 @@ services:
     ports:
       - '3000:3000'
     environment: # node 환경변수 주입. 따로 .env 파일을 작성할 필요 없이 여기다 환경변수 값들을 셋팅할 수도 있다.
-      - DATABASE_USERNAME= ji-hokim
-      - DATABASE_PASSWORD= 21413784
-      - DATABASE_TYPE= postgres
-      - DATABASE_HOST= pg # 호스트 이름은 services 하의 데이터베이스 이름과 같아야 한다.
-      - DATABASE_PORT= 5432
-      - DATABASE_DATABASE= buildnow_test
-      - DATABASE_SYNCHRONIZE= true
+      - DATABASE_USERNAME=ji-hokim
+      - DATABASE_PASSWORD=21413784
+      - DATABASE_TYPE=postgres
+      - DATABASE_HOST=pg # 호스트 이름은 services 하의 데이터베이스 이름과 같아야 한다.
+      - DATABASE_PORT=5432
+      - DATABASE_DATABASE=buildnow_test
+      - DATABASE_SYNCHRONIZE=true
       - PORT= 3000
     networks:
       - my-net
@@ -23,9 +23,9 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - POSTGRES_USER= ji-hokim
-      - POSTGRES_PASSWORD= 21413784
-      - POSTGRES_DB= buildnow_test
+      - POSTGRES_USER=ji-hokim
+      - POSTGRES_PASSWORD=21413784
+      - POSTGRES_DB=buildnow_test
     networks:
       - my-net
     volumes:
