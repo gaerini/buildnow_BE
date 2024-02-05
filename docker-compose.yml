@@ -8,7 +8,7 @@ services:
       DATABASE_USERNAEM: jihokim
       DATABASE_PASSWORD: '21413784'
       DATABASE_TYPE: postgres
-      DATABASE_HOST: localhost # 호스트 이름은 services 하의 데이터베이스 이름과 같아야 한다.
+      DATABASE_HOST: pg # 호스트 이름은 services 하의 데이터베이스 이름과 같아야 한다.
       DATABASE_PORT: 5432
       DATABASE_DATABASE: buildnow_test
       DATABASE_SYNCHRONIZE: true
