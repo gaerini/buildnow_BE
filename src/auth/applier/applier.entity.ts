@@ -54,9 +54,10 @@ export class Applier {
   })
   appliedList: Application[];
 
-  @OneToOne(() => Finance, {
+  @OneToOne(() => Finance, (finance) => finance.applier, {
     cascade: ['remove'],
   })
+  @JoinColumn()
   finance: Finance;
 
   @OneToMany(() => PaperReq, (paperReq) => paperReq.applier, {
@@ -77,9 +78,4 @@ export class Applier {
     },
   )
   possibleWorkTypeList: PossibleWorkType[];
-
-  @OneToMany((type) => Finance, (finance) => finance.applier, {
-    cascade: ['remove'],
-  })
-  financeList: Finance[];
 }

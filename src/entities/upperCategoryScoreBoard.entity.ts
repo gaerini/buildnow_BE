@@ -22,8 +22,12 @@ export class UpperCategoryScoreBoard {
   )
   application: Application;
 
-  @OneToMany((type) => ScoreBoard, (scoreBoard) => scoreBoard.upperCategory, {
-    cascade: ['remove'],
-  })
-  scoreboardList: ScoreBoard[];
+  @OneToMany(
+    (type) => ScoreBoard,
+    (scoreBoard) => scoreBoard.upperCategoryScoreBoard,
+    {
+      cascade: ['remove'],
+    },
+  )
+  scoreBoardList: ScoreBoard[];
 }

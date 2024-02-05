@@ -36,11 +36,10 @@
   {
     "upperCategory": "인증 현황",
     "detail": [
-      { "category": "ESG 인증 및 평가", "perfectScore": 5, "threshold": 3 },
+      { "category": "ESG 인증 및 평가", "perfectScore": 5 },
       {
         "category": "ISO 인증서 보유 여부",
-        "perfectScore": 10,
-        "threshold": 6
+        "perfectScore": 10
       }
     ]
   },
@@ -50,13 +49,11 @@
     "detail": [
       {
         "category": "시공능력 평가액 순위",
-        "perfectScore": 15,
-        "threshold": 8
+        "perfectScore": 15
       },
       {
         "category": "최근 3년간 공사 실적",
-        "perfectScore": 15,
-        "threshold": 8
+        "perfectScore": 15
       }
     ]
   }

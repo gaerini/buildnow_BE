@@ -28,6 +28,8 @@ import { WorkTypeSeeder } from './seeder/workType.seeder';
 import { CapacityValueSeeder } from './seeder/capacityValue.seeder';
 import { PaperReqSeeder } from './seeder/paperReq.seeder';
 import { ApplicationSeeder } from './seeder/application.seeder';
+import { FinanceSeeder } from './seeder/finance.seeder';
+import { ScoreBoardSeeder } from './seeder/scoreBoard.seeder';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
@@ -69,8 +71,10 @@ seeder({
   GradingSeeder,
   ApplierSeeder,
   ApplicationSeeder,
+  FinanceSeeder,
   HistorySeeder,
   WorkTypeSeeder,
   CapacityValueSeeder,
   PaperReqSeeder,
+  ScoreBoardSeeder,
 ]);

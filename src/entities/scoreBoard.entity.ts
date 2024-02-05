@@ -14,9 +14,6 @@ export class ScoreBoard {
   id: number;
 
   @Column()
-  upperCategory: string;
-
-  @Column()
   category: string;
 
   @Column()
@@ -24,7 +21,7 @@ export class ScoreBoard {
 
   @ManyToOne(
     (type) => UpperCategoryScoreBoard,
-    (upperCategoryScoreBoard) => upperCategoryScoreBoard.scoreboardList,
+    (upperCategoryScoreBoard) => upperCategoryScoreBoard.scoreBoardList,
   )
   upperCategoryScoreBoard: UpperCategoryScoreBoard;
 }

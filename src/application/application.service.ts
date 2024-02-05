@@ -31,11 +31,16 @@ export class ApplicationService {
   async findMyApplicants(
     recruiter: Recruiter,
     recruitmentId: number,
-  ): Promise<Application[]> {
+  ): Promise<any> {
     try {
       const recruitment = await this.dataSource.manager.findOne(Recruitment, {
         where: { id: recruitmentId },
-        relations: ['recruiter', 'applicationList'],
+        relations: [
+          'recruiter',
+          'applicationList',
+          'upperCategoryGradingList',
+          'upperCategoryGradingList.gradingList',
+        ],
       });
 
       if (!recruitment) {
@@ -45,7 +50,28 @@ export class ApplicationService {
       } else if (recruitment.recruiter.businessId !== recruiter.businessId) {
         throw new ForbiddenException('권한이 없습니다.');
       } else {
-        return recruitment.applicationList;
+        let applicationList = [];
+        let gradingList = [];
+        for (const application of recruitment.applicationList) {
+          const tempApplication = await this.dataSource.manager.findOne(
+            Application,
+            {
+              where: { id: application.id },
+              relations: [
+                'applier',
+                'upperCategoryScoreBoardList',
+                'upperCategoryScoreBoardList.scoreBoardList',
+              ],
+            },
+          );
+          delete tempApplication.applier.password;
+          applicationList.push(tempApplication);
+        }
+        gradingList.push(recruitment.upperCategoryGradingList);
+        return {
+          total: recruitment.upperCategoryGradingList,
+          score: applicationList,
+        };
       }
     } catch (err) {
       console.log(err);

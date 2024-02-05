@@ -3,10 +3,13 @@ import { Seeder } from 'nestjs-seeder';
 import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { Grading } from '../entities/grading.entity';
 import { DataSource, EntityManager } from 'typeorm';
-import GradingData from './seedingData/grading.json';
 import { InternalServerErrorException } from '@nestjs/common';
 import { UpperCategoryGrading } from '../entities/upperCategoryGrading.entity';
-
+import { UpperCategoryScoreBoard } from '../entities/upperCategoryScoreBoard.entity';
+import { Application } from '../entities/application.entity';
+import scoreData from './seedingData/scoreBoard.json';
+import { Applier } from '../auth/applier/applier.entity';
+import { ScoreBoard } from '../entities/scoreBoard.entity';
 export class ScoreBoardSeeder implements Seeder {
   constructor(
     @InjectDataSource()
@@ -19,24 +22,33 @@ export class ScoreBoardSeeder implements Seeder {
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
-      const recruitment = await queryRunner.manager.findOneBy(Recruiter, {
-        businessId: '123-45-67890',
+      const application = await queryRunner.manager.find(Application, {
+        relations: ['applier'],
       });
 
-      for (const temp of GradingData) {
-        const upperCategory = temp.upperCategory;
-        const newUpperCategory = queryRunner.manager.create(
-          UpperCategoryGrading,
-          { upperCategory, recruitment: recruitment },
-        );
-        const tempUpperCategory =
-          await queryRunner.manager.save(newUpperCategory);
-
-        for (const detail of temp.detail) {
-          const testGrading = queryRunner.manager.create(Grading, {
-            ...detail,
-            upperCategoryGrading: tempUpperCategory,
-          });
+      for (const temp of scoreData) {
+        const application = await queryRunner.manager.findOne(Application, {
+          where: { id: temp.id },
+        });
+        for (const score of temp.scores) {
+          const newUpperCategory = queryRunner.manager.create(
+            UpperCategoryScoreBoard,
+            {
+              upperCategory: score.upperCategory,
+              application: application,
+            },
+          );
+          const tempUpperCategory = await queryRunner.manager.save(
+            UpperCategoryScoreBoard,
+            newUpperCategory,
+          );
+          for (const detail of score.detail) {
+            const testScore = queryRunner.manager.create(ScoreBoard, {
+              ...detail,
+              upperCategoryScoreBoard: tempUpperCategory,
+            });
+            await queryRunner.manager.save(ScoreBoard, testScore);
+          }
         }
       }
 
@@ -51,6 +63,6 @@ export class ScoreBoardSeeder implements Seeder {
   }
 
   async drop(): Promise<any> {
-    await this.dataSource.manager.delete(UpperCategoryGrading, {});
+    await this.dataSource.manager.delete(UpperCategoryScoreBoard, {});
   }
 }
