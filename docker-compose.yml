@@ -13,6 +13,8 @@ services:
       - DATABASE_DATABASE= buildnow_test
       - DATABASE_SYNCHRONIZE= true
       - PORT= 3000
+    networks:
+      - my-net
     depends_on:
       - pg
 
@@ -24,7 +26,11 @@ services:
       - POSTGRES_USER= ji-hokim
       - POSTGRES_PASSWORD= 21413784
       - POSTGRES_DB= buildnow_test
+    networks:
+      - my-net
     volumes:
       - postgres_data:/var/lib/postgresql/data
 volumes:
   postgres_data:
+networks:
+  my-net:
