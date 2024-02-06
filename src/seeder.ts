@@ -35,10 +35,10 @@ import { Requirement } from './entities/requirement.entity';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  host: 'localhost',
+  host: process.env.DATABASE_HOST,
   port: 5432,
   username: 'ji-hokim',
-  password: '',
+  password: process.env.DATABASE_PASSWORD || '',
   database: 'buildnow_test',
   entities: [
     Recruiter,
