@@ -16,18 +16,10 @@ async function bootstrap() {
     }),
   );
 
-  const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
-
   app.enableCors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('CORS not allowed'));
-      }
-    },
-    methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true,
+    exposedHeaders: ['Authorization'],
   });
 
   await app.listen(port);
