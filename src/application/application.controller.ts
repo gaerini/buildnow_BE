@@ -33,15 +33,11 @@ export class ApplicationController {
     return this.applicationService.findAll();
   }
 
-  @Get('getMyApplicants/:recruitmentId')
+  @Get('getMyApplicants')
   async findMyApplicants(
     @GetUser() recruiter: Recruiter,
-    @Param('recruitmentId', ParseIntPipe) recruitmentId: number,
   ): Promise<Application[]> {
-    return await this.applicationService.findMyApplicants(
-      recruiter,
-      recruitmentId,
-    );
+    return await this.applicationService.findMyApplicants(recruiter);
   }
 
   @Post(':recruitmentId')

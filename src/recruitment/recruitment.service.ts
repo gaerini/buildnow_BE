@@ -18,8 +18,9 @@ export class RecruitmentService {
   }
 
   findAllByRecruiter(recruiter: Recruiter): Promise<Recruitment[]> {
-    return this.em.findBy(Recruitment, {
-      recruiter: recruiter,
+    return this.em.find(Recruitment, {
+      where: { recruiter: recruiter },
+      relations: ['recruitingWorkTypeList', 'requirementList'],
     });
   }
 
@@ -41,8 +42,6 @@ export class RecruitmentService {
     const { deadline, workType, requirements } = createRecruitmentDto;
     const newRecruitment = this.em.create(Recruitment, {
       deadline,
-      workType,
-      requirements,
       recruiter,
     });
     return await this.em.save(Recruitment, newRecruitment);

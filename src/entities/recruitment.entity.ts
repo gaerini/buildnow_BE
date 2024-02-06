@@ -9,6 +9,8 @@ import {
 import { Recruiter } from '../auth/recruiter/recruiter.entity';
 import { Application } from './application.entity';
 import { UpperCategoryGrading } from './upperCategoryGrading.entity';
+import { RecruitingWorkType } from './recruitingWorkType.entity';
+import { Requirement } from './requirement.entity';
 
 @Entity()
 export class Recruitment {
@@ -17,12 +19,6 @@ export class Recruitment {
 
   @Column()
   deadline: string;
-
-  @Column()
-  workType: string;
-
-  @Column('text', { array: true })
-  requirements: string[];
 
   @Column()
   threshold: number;
@@ -43,4 +39,13 @@ export class Recruitment {
     },
   )
   upperCategoryGradingList: UpperCategoryGrading[];
+
+  @OneToMany(
+    () => RecruitingWorkType,
+    (recruitingWorkType) => recruitingWorkType.recruitment,
+  )
+  recruitingWorkTypeList: RecruitingWorkType[];
+
+  @OneToMany(() => Requirement, (requirement) => requirement.recruitment)
+  requirementList: Requirement[];
 }

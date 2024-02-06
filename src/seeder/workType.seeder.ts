@@ -24,7 +24,6 @@ export class WorkTypeSeeder implements Seeder {
             PossibleWorkType,
             {
               workType: workType.workType,
-              isApply: workType.isApply,
               applier: currentApplier,
             },
           );

@@ -16,9 +16,6 @@ export class PossibleWorkType {
   @Column()
   workType: string;
 
-  @Column()
-  isApply: boolean;
-
   @ManyToOne((type) => Applier, (applier) => applier.possibleWorkTypeList)
   applier: Applier;
 

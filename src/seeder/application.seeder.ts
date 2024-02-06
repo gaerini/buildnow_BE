@@ -62,6 +62,7 @@ export class ApplicationSeeder implements Seeder {
 
       await queryRunner.commitTransaction();
     } catch (err) {
+      console.log(err);
       await queryRunner.rollbackTransaction();
       throw new InternalServerErrorException();
     } finally {
