@@ -28,13 +28,10 @@ export class ApplicationService {
     return this.dataSource.manager.find(Application);
   }
 
-  async findMyApplicants(
-    recruiter: Recruiter,
-    recruitmentId: number,
-  ): Promise<any> {
+  async findMyApplicants(recruiter: Recruiter): Promise<any> {
     try {
       const recruitment = await this.dataSource.manager.findOne(Recruitment, {
-        where: { id: recruitmentId },
+        where: { recruiter: recruiter },
         relations: [
           'recruiter',
           'applicationList',

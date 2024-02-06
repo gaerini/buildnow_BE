@@ -30,14 +30,16 @@ import { PaperReqSeeder } from './seeder/paperReq.seeder';
 import { ApplicationSeeder } from './seeder/application.seeder';
 import { FinanceSeeder } from './seeder/finance.seeder';
 import { ScoreBoardSeeder } from './seeder/scoreBoard.seeder';
+import { RecruitingWorkType } from './entities/recruitingWorkType.entity';
+import { Requirement } from './entities/requirement.entity';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  host: process.env.DATABASE_HOST,
+  host: 'localhost',
   port: 5432,
   username: 'ji-hokim',
-  password: process.env.DATABASE_PASSWORD || '',
-  database: process.env.DATABASE_DATABASE,
+  password: '',
+  database: 'buildnow_test',
   entities: [
     Recruiter,
     Recruitment,
@@ -52,6 +54,8 @@ const dataSourceOptions: DataSourceOptions = {
     UpperCategoryGrading,
     UpperCategoryScoreBoard,
     PossibleWorkType,
+    RecruitingWorkType,
+    Requirement,
   ],
   synchronize: true,
 };
