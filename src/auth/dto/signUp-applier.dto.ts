@@ -33,4 +33,8 @@ export class SignUpApplierDto {
   companyPhoneNum: string;
 
   companyIntro: string;
+
+  hadAccident: boolean;
+
+  estDate: string;
 }

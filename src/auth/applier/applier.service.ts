@@ -67,6 +67,8 @@ export class ApplierService {
       esg,
       companyPhoneNum,
       companyIntro,
+      hadAccident,
+      estDate,
     } = signUpApplierDto;
 
     const salt = await bcrypt.genSalt();
@@ -84,6 +86,8 @@ export class ApplierService {
       esg,
       companyPhoneNum,
       companyIntro,
+      hadAccident,
+      estDate,
     });
 
     try {

@@ -25,6 +25,8 @@ export class ApplierSeeder implements Seeder {
       const esg = temp.esg;
       const companyPhoneNum = temp.companyPhoneNum;
       const companyIntro = temp.companyIntro;
+      const hadAccident = temp.hadAccident;
+      const estDate = temp.estDate;
       await this.authService.signUpApplier({
         businessId,
         password,
@@ -38,6 +40,8 @@ export class ApplierSeeder implements Seeder {
         esg,
         companyPhoneNum,
         companyIntro,
+        hadAccident,
+        estDate,
       });
     }
   }
