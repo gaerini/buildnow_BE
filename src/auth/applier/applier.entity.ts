@@ -55,6 +55,12 @@ export class Applier {
   @Column()
   companyIntro: string;
 
+  @Column()
+  hadAccident: boolean;
+
+  @Column({ type: 'date' })
+  estDate: Date;
+
   @OneToMany((type) => Application, (application) => application.applier, {
     cascade: ['remove'],
   })

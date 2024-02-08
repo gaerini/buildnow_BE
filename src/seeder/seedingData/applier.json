@@ -12,7 +12,8 @@
     "esg": true,
     "companyPhoneNum": "02-123-4567",
     "companyIntro": "안녕하세요 저희 회사는 정말 좋은 회사입니다. 저희는 무한한 가능성을 가지고 있습니다.",
-
+    "hadAccident": false,
+    "estDate": "1980-03-01",
     "history": [
       [
         "2003-10-04",
@@ -201,7 +202,8 @@
     "esg": false,
     "companyPhoneNum": "02-123-4567",
     "companyIntro": "안녕하세요 저희 회사는 정말 좋은 회사입니다. 저희는 무한한 가능성을 가지고 있습니다.",
-
+    "hadAccident": true,
+    "estDate": "2000-03-09",
     "history": [
       [
         "2003-10-04",
@@ -390,6 +392,8 @@
     "esg": true,
     "companyPhoneNum": "02-123-4567",
     "companyIntro": "안녕하세요 저희 회사는 정말 좋은 회사입니다. 저희는 무한한 가능성을 가지고 있습니다.",
+    "hadAccident": true,
+    "estDate": "1980-03-01",
     "history": [
       [
         "2003-10-04",

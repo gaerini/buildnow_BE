@@ -222,6 +222,8 @@ export class ApplicationService {
           'appliedList.upperCategoryScoreBoardList.scoreBoardList',
           'paperReqList',
           'historyList',
+          'possibleWorkTypeList',
+          'possibleWorkTypeList.capacityValueList',
         ],
       });
       delete (await applier).password;

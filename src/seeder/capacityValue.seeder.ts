@@ -30,6 +30,7 @@ export class CapacityValueSeeder implements Seeder {
 
           const newCapacityValue = queryRunner.manager.create(CapacityValue, {
             ...restOfCapacityValue,
+            possibleWorktype: possibleWorkType,
           });
           await queryRunner.manager.save(CapacityValue, newCapacityValue);
         }
