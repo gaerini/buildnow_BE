@@ -49,6 +49,12 @@ export class Applier {
   @Column()
   esg: boolean;
 
+  @Column()
+  companyPhoneNum: string;
+
+  @Column()
+  companyIntro: string;
+
   @OneToMany((type) => Application, (application) => application.applier, {
     cascade: ['remove'],
   })

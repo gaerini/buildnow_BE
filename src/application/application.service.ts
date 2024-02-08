@@ -47,8 +47,21 @@ export class ApplicationService {
       } else if (recruitment.recruiter.businessId !== recruiter.businessId) {
         throw new ForbiddenException('권한이 없습니다.');
       } else {
-        let applicationList = [];
-        let gradingList = [];
+        const scoreList = [];
+        const gradingObj = {};
+
+        recruitment.upperCategoryGradingList.forEach((upperCategoryGrading) => {
+          const upperCategory = upperCategoryGrading.upperCategory;
+          const totalScore = upperCategoryGrading.gradingList.reduce(
+            (acc, grading) => {
+              return acc + grading.perfectScore;
+            },
+            0,
+          );
+          //total score 상위항목별 합계 계산
+          gradingObj[upperCategory] = totalScore;
+        });
+
         for (const application of recruitment.applicationList) {
           const tempApplication = await this.dataSource.manager.findOne(
             Application,
@@ -61,14 +74,33 @@ export class ApplicationService {
               ],
             },
           );
-          delete tempApplication.applier.password;
-          applicationList.push(tempApplication);
+          const scoreObj = {};
+          //return 오브젝트에 사업자번호 할당
+          scoreObj['businessId'] = tempApplication.applier.businessId;
+          let scoreSum = 0;
+          tempApplication.upperCategoryScoreBoardList.forEach(
+            (upperCategoryScoreBoard) => {
+              const upperCategory = upperCategoryScoreBoard.upperCategory;
+              const totalScore = upperCategoryScoreBoard.scoreBoardList.reduce(
+                (acc, scoreBoard) => {
+                  scoreSum += scoreBoard.score;
+                  return acc + scoreBoard.score;
+                },
+                0,
+              );
+              //score 상위항목별 합계 계산
+              scoreObj[upperCategory] = totalScore;
+            },
+          );
+          if (recruitment.threshold <= scoreSum) {
+            scoreObj['isPass'] = true;
+          } else {
+            scoreObj['isPass'] = false;
+          }
+          scoreList.push(scoreObj);
         }
-        gradingList.push(recruitment.upperCategoryGradingList);
-        return {
-          total: recruitment.upperCategoryGradingList,
-          score: applicationList,
-        };
+        const returnObj = { total: gradingObj, score: scoreList };
+        return returnObj;
       }
     } catch (err) {
       console.log(err);

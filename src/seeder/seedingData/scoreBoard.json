@@ -5,14 +5,14 @@
       {
         "upperCategory": "경영 일반",
         "detail": [
-          { "category": "회사설립 경과 년수", "score": 3 },
+          { "category": "회사설립 경과 년수", "score": 5 },
           {
             "category": "지방 업체 (서울 경기 외) 여부",
-            "score": 2
+            "score": 5
           },
           {
             "category": "산재 발생 여부",
-            "score": 4
+            "score": 5
           }
         ]
       },
