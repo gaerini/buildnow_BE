@@ -113,14 +113,11 @@ export class ApplicationService {
             if (
               this.identifyingString(condition.conditionName) === 'creditGrade'
             ) {
-              console.log(this.changeGradeToScore(condition.conditionValue));
-              console.log(this.changeGradeToScore(beEval.creditGrade));
               if (
                 this.changeGradeToScore(condition.conditionValue) >
                 this.changeGradeToScore(beEval.creditGrade)
               ) {
                 applierObj['isPass'] = '미달';
-                console.log('신용등급');
               }
             } else if (
               this.identifyingString(condition.conditionName) ===
@@ -131,7 +128,6 @@ export class ApplicationService {
                 this.changeGradeToScore(beEval.cashFlowGrade)
               ) {
                 applierObj['isPass'] = '미달';
-                console.log('현금흐름');
               }
             }
           });
@@ -151,24 +147,22 @@ export class ApplicationService {
           );
 
           for (const upperCategory of upperCategoryList) {
-            console.log(1);
             for (const reqPaper of upperCategory.requirementList) {
-              const isExist = await this.dataSource.manager.find(PaperReq, {
-                where: {
-                  documentName: reqPaper.documentName,
-                  applier: tempApplication.applier,
-                },
-              });
-              console.log(application);
-              if (isExist.length === 0) {
-                applierObj['isPass'] = '미달';
-                console.log('서류');
-                break;
+              if (reqPaper.isEssential) {
+                const isExist = await this.dataSource.manager.find(PaperReq, {
+                  where: {
+                    documentName: reqPaper.documentName,
+                    applier: tempApplication.applier,
+                  },
+                });
+                if (isExist.length === 0) {
+                  applierObj['isPass'] = '미달';
+                  break;
+                }
               }
             }
           }
 
-          console.log(applierObj['isPass']);
           if (
             applierObj['isPass'] === '미정' ||
             applierObj['isPass'] === null
