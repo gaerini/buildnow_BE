@@ -29,4 +29,8 @@ export class SignUpApplierDto {
   corporateApplicationNum: string;
 
   esg: boolean;
+
+  companyPhoneNum: string;
+
+  companyIntro: string;
 }

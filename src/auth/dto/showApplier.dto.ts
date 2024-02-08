@@ -15,6 +15,7 @@ export class ShowApplierDto {
   managerEmail: string;
   corporateApplication: string;
   esg: boolean;
+  iso: boolean;
   appliedList: Application[];
   finance: Finance;
   paperReqList: PaperReq[];

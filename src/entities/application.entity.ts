@@ -25,6 +25,12 @@ export class Application {
   @Column()
   isRecommended: boolean;
 
+  @Column({ default: false })
+  isRead: boolean;
+
+  @Column({ default: false })
+  isChecked: boolean;
+
   @CreateDateColumn()
   appliedDate: Date;
 

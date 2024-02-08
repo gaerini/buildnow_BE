@@ -33,12 +33,22 @@ export class ApplierService {
       ],
     });
 
+    let iso = false;
+
+    for (const paper of applier.paperReqList) {
+      if (paper.documentName.includes('ISO')) {
+        iso = true;
+        break;
+      }
+    }
+
     if (!applier)
       throw new NotFoundException(
         '해당 사업자번호의 업체는 지원하지 않았습니다.',
       );
     else {
-      const payload = new ShowApplierDto(applier);
+      let payload = new ShowApplierDto(applier);
+      payload.iso = iso;
       return payload;
     }
   }
@@ -55,6 +65,8 @@ export class ApplierService {
       managerEmail,
       corporateApplicationNum,
       esg,
+      companyPhoneNum,
+      companyIntro,
     } = signUpApplierDto;
 
     const salt = await bcrypt.genSalt();
@@ -70,6 +82,8 @@ export class ApplierService {
       managerEmail,
       corporateApplicationNum,
       esg,
+      companyPhoneNum,
+      companyIntro,
     });
 
     try {
