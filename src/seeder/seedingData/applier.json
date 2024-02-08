@@ -160,26 +160,26 @@
         "year1Value": 1000,
         "year2Value": 2000,
         "year3Value": 3000,
-        "nationalRanking": 1,
-        "regionalRanking": 1,
-        "nationalRankingRatio": 100,
-        "regionalRankingRatio": 100
+        "nationalRanking": 452,
+        "regionalRanking": 34,
+        "nationalRankingRatio": 3,
+        "regionalRankingRatio": 5
       },
       {
         "workType": "콘크리트",
         "year1Value": 1000,
         "year2Value": 2000,
         "year3Value": 3000,
-        "nationalRanking": 2,
-        "regionalRanking": 2,
-        "nationalRankingRatio": 99,
-        "regionalRankingRatio": 99
+        "nationalRanking": 7525,
+        "regionalRanking": 1056,
+        "nationalRankingRatio": 45,
+        "regionalRankingRatio": 70
       }
     ],
     "finance": {
-      "creditGrade": "AA",
+      "creditGrade": "BB+",
       "cashFlowGrade": "B",
-      "watchGrade": "BB-",
+      "watchGrade": "정상",
       "salesRevenue": 3000,
       "operatingMarginRatio": 50,
       "netProfitMarginRatio": 40,
@@ -194,25 +194,25 @@
     "password": "1234",
     "companyName": "AA건설",
     "ceoName": "김대표",
-    "companyAddress": "경기도 파주시 00로 xxx, 3층",
-    "managerName": "공도웅",
+    "companyAddress": "충청북도 천안시 00로 xxx, 3층",
+    "managerName": "김지호",
     "mangerPhoneNum": "010-1234-1234",
-    "managerEmail": "kong@kong.ac.kr",
+    "managerEmail": "jiho@kim.ac.kr",
     "corporateApplicationNum": "0987-65432",
     "esg": false,
     "companyPhoneNum": "02-123-4567",
-    "companyIntro": "안녕하세요 저희 회사는 정말 좋은 회사입니다. 저희는 무한한 가능성을 가지고 있습니다.",
+    "companyIntro": "안녕하세요 저희 회사는 정말 좋은 회사입니다. 저희는 무한한 가능성을 가지고 있습니다. 천안은 호두과자가 맛있지요~",
     "hadAccident": true,
-    "estDate": "2000-03-09",
+    "estDate": "2011-08-20",
     "history": [
       [
-        "2003-10-04",
-        "(주) L 이앤씨 창립 - 전문건설업 면허취득 (철근 콘크리트 공사업 / 경기 제 00-00-000)"
+        "2011-08-20",
+        "(주) AA건설 창립 - 전문건설업 면허취득 (철근 콘크리트 공사업 / 경기 제 00-00-000)"
       ],
-      ["2009-03-14", "어쩔티비 저쩔티비"],
-      ["2011-08-01", "우짤래미 저짤래미"],
-      ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
-      ["2022-01-01", "I recieved the king"]
+      ["2012-03-14", "어디 현장 시공 함"],
+      ["2016-12-01", "우짤래미 저짤래미"],
+      ["2021-08-29", "표창장 받음"],
+      ["2022-01-01", "대표자 바뀜"]
     ],
     "possibleWorkType": [
       { "workType": "철근", "isApply": true },
@@ -352,8 +352,8 @@
         "year3Value": 3000,
         "nationalRanking": 3,
         "regionalRanking": 3,
-        "nationalRankingRatio": 99,
-        "regionalRankingRatio": 80
+        "nationalRankingRatio": 9,
+        "regionalRankingRatio": 18
       },
       {
         "workType": "철골",
@@ -362,14 +362,14 @@
         "year3Value": 3000,
         "nationalRanking": 4,
         "regionalRanking": 4,
-        "nationalRankingRatio": 90,
-        "regionalRankingRatio": 87
+        "nationalRankingRatio": 27,
+        "regionalRankingRatio": 15
       }
     ],
     "finance": {
-      "creditGrade": "AA",
+      "creditGrade": "BBB",
       "cashFlowGrade": "B",
-      "watchGrade": "BB-",
+      "watchGrade": "관찰",
       "salesRevenue": 3000,
       "operatingMarginRatio": 50,
       "netProfitMarginRatio": 40,
@@ -383,24 +383,24 @@
     "businessId": "45-56-678901",
     "password": "1234",
     "companyName": "B이엔씨",
-    "ceoName": "김대표",
-    "companyAddress": "경기도 파주시 00로 xxx, 3층",
-    "managerName": "공도웅",
-    "mangerPhoneNum": "010-1234-1234",
-    "managerEmail": "kong@kong.ac.kr",
+    "ceoName": "한대표",
+    "companyAddress": "부산광역시 해운대구 00로 xxx, 12층",
+    "managerName": "최경석",
+    "mangerPhoneNum": "010-5432-9646",
+    "managerEmail": "kyle@kyle.ac.kr",
     "corporateApplicationNum": "0987-65432",
     "esg": true,
     "companyPhoneNum": "02-123-4567",
-    "companyIntro": "안녕하세요 저희 회사는 정말 좋은 회사입니다. 저희는 무한한 가능성을 가지고 있습니다.",
+    "companyIntro": "안녕하세요 저희 회사는 정말 좋은 회사입니다. 저희는 무한한 가능성을 가지고 있습니다. 저희 회사는 부산에서 되게 잘하는 회사",
     "hadAccident": true,
-    "estDate": "1980-03-01",
+    "estDate": "1999-09-29",
     "history": [
       [
         "2003-10-04",
-        "(주) L 이앤씨 창립 - 전문건설업 면허취득 (철근 콘크리트 공사업 / 경기 제 00-00-000)"
+        "(주) B이엔씨 창립 - 전문건설업 면허취득 (철근 콘크리트 공사업 / 경기 제 00-00-000)"
       ],
-      ["2009-03-14", "어쩔티비 저쩔티비"],
-      ["2011-08-01", "우짤래미 저짤래미"],
+      ["2009-03-14", "00건설 우수 협력사"],
+      ["2011-08-01", "위치 옮김"],
       ["2019-04-29", "어쩔 냉장고 저쩔 전자레인지"],
       ["2022-01-01", "I recieved the king"]
     ],
@@ -537,26 +537,26 @@
         "year1Value": 1000,
         "year2Value": 2000,
         "year3Value": 3000,
-        "nationalRanking": 1,
-        "regionalRanking": 1,
-        "nationalRankingRatio": 100,
-        "regionalRankingRatio": 100
+        "nationalRanking": 734,
+        "regionalRanking": 35,
+        "nationalRankingRatio": 7,
+        "regionalRankingRatio": 2
       },
       {
         "workType": "콘크리트",
         "year1Value": 1000,
         "year2Value": 2000,
         "year3Value": 3000,
-        "nationalRanking": 2,
-        "regionalRanking": 2,
-        "nationalRankingRatio": 99,
-        "regionalRankingRatio": 99
+        "nationalRanking": 1478,
+        "regionalRanking": 347,
+        "nationalRankingRatio": 12,
+        "regionalRankingRatio": 10
       }
     ],
     "finance": {
       "creditGrade": "AA",
       "cashFlowGrade": "B",
-      "watchGrade": "BB-",
+      "watchGrade": "정상",
       "salesRevenue": 3000,
       "operatingMarginRatio": 50,
       "netProfitMarginRatio": 40,
