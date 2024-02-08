@@ -7,7 +7,8 @@ import GradingData from './seedingData/grading.json';
 import { InternalServerErrorException } from '@nestjs/common';
 import { UpperCategoryGrading } from '../entities/upperCategoryGrading.entity';
 import { Recruitment } from '../entities/recruitment.entity';
-
+import requirementList from './seedingData/requirement.json';
+import { Requirement } from '../entities/requirement.entity';
 export class GradingSeeder implements Seeder {
   constructor(
     @InjectDataSource()
@@ -34,19 +35,37 @@ export class GradingSeeder implements Seeder {
           UpperCategoryGrading,
           { upperCategory: upperCategory, recruitment: recruitment },
         );
-        await queryRunner.manager.save(newUpperCategory);
-        const tempUpperCategory = await queryRunner.manager.findOneBy(
+        const tempUpperCategory = await queryRunner.manager.save(
           UpperCategoryGrading,
-          {
-            upperCategory: upperCategory,
-          },
+          newUpperCategory,
         );
+
         for (const detail of temp.detail) {
           const testGrading = queryRunner.manager.create(Grading, {
             ...detail,
             upperCategoryGrading: tempUpperCategory,
           });
           await queryRunner.manager.save(Grading, testGrading);
+        }
+      }
+      //requirement insert
+      const upperCategoryList = await queryRunner.manager.find(
+        UpperCategoryGrading,
+        {
+          where: { recruitment: recruitment },
+          relations: ['requirementList'],
+        },
+      );
+      for (const upperCategory of upperCategoryList) {
+        for (const paper of requirementList) {
+          if (paper.upperCategory === upperCategory.upperCategory) {
+            const newRequirement = queryRunner.manager.create(Requirement, {
+              documentName: paper.documentName,
+              isEssential: paper.isEssential,
+              upperCategoryGrading: upperCategory,
+            });
+            await queryRunner.manager.save(Requirement, newRequirement);
+          }
         }
       }
 

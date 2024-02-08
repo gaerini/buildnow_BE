@@ -16,6 +16,10 @@ import { ScoreBoard } from 'src/entities/scoreBoard.entity';
 import { NewScores } from './dto/newScores.dto';
 import { UpdateScoresDto } from './dto/updateScores.dto';
 import { Recruiter } from 'src/auth/recruiter/recruiter.entity';
+import { Finance } from 'src/entities/applier_info/finance.entity';
+import { PaperReq } from 'src/entities/applier_info/paperReq.entity';
+import { Requirement } from 'src/entities/requirement.entity';
+import { UpperCategoryGrading } from 'src/entities/upperCategoryGrading.entity';
 
 @Injectable()
 export class ApplicationService {
@@ -37,6 +41,9 @@ export class ApplicationService {
           'applicationList',
           'upperCategoryGradingList',
           'upperCategoryGradingList.gradingList',
+          'upperCategoryGradingList.requirementList',
+
+          'conditionList',
         ],
       });
 
@@ -47,7 +54,7 @@ export class ApplicationService {
       } else if (recruitment.recruiter.businessId !== recruiter.businessId) {
         throw new ForbiddenException('권한이 없습니다.');
       } else {
-        const scoreList = [];
+        const applierList = [];
         const gradingObj = {};
 
         recruitment.upperCategoryGradingList.forEach((upperCategoryGrading) => {
@@ -74,9 +81,12 @@ export class ApplicationService {
               ],
             },
           );
-          const scoreObj = {};
+
+          const applierObj = {};
           //return 오브젝트에 사업자번호 할당
-          scoreObj['businessId'] = tempApplication.applier.businessId;
+          applierObj['companyName'] = tempApplication.applier.companyName;
+          applierObj['businessId'] = tempApplication.applier.businessId;
+          const scoreObj = {};
           let scoreSum = 0;
           tempApplication.upperCategoryScoreBoardList.forEach(
             (upperCategoryScoreBoard) => {
@@ -92,19 +102,141 @@ export class ApplicationService {
               scoreObj[upperCategory] = totalScore;
             },
           );
-          if (recruitment.threshold <= scoreSum) {
-            scoreObj['isPass'] = true;
-          } else {
-            scoreObj['isPass'] = false;
+          applierObj['score'] = scoreObj;
+          applierObj['isPass'] = '미정';
+          recruitment.conditionList.forEach(async (condition) => {
+            const beEval = await this.dataSource.manager.findOne(Finance, {
+              where: { applier: tempApplication.applier },
+            });
+
+            //만약 crerditGrade가 미달 조건이라면
+            if (
+              this.identifyingString(condition.conditionName) === 'creditGrade'
+            ) {
+              console.log(this.changeGradeToScore(condition.conditionValue));
+              console.log(this.changeGradeToScore(beEval.creditGrade));
+              if (
+                this.changeGradeToScore(condition.conditionValue) >
+                this.changeGradeToScore(beEval.creditGrade)
+              ) {
+                applierObj['isPass'] = '미달';
+                console.log('신용등급');
+              }
+            } else if (
+              this.identifyingString(condition.conditionName) ===
+              'cashFlowGrade'
+            ) {
+              if (
+                this.changeGradeToScore(condition.conditionValue) >
+                this.changeGradeToScore(beEval.cashFlowGrade)
+              ) {
+                applierObj['isPass'] = '미달';
+                console.log('현금흐름');
+              }
+            }
+          });
+          const upperCategoryList = await this.dataSource.manager.find(
+            UpperCategoryGrading,
+            {
+              where: {
+                recruitment: await this.dataSource.manager.findOne(
+                  Recruitment,
+                  {
+                    where: { recruiter: recruiter },
+                  },
+                ),
+              },
+              relations: ['requirementList', 'recruitment'],
+            },
+          );
+
+          for (const upperCategory of upperCategoryList) {
+            console.log(1);
+            for (const reqPaper of upperCategory.requirementList) {
+              const isExist = await this.dataSource.manager.find(PaperReq, {
+                where: {
+                  documentName: reqPaper.documentName,
+                  applier: tempApplication.applier,
+                },
+              });
+              console.log(application);
+              if (isExist.length === 0) {
+                applierObj['isPass'] = '미달';
+                console.log('서류');
+                break;
+              }
+            }
           }
-          scoreList.push(scoreObj);
+
+          console.log(applierObj['isPass']);
+          if (
+            applierObj['isPass'] === '미정' ||
+            applierObj['isPass'] === null
+          ) {
+            if (recruitment.threshold <= scoreSum) {
+              applierObj['isPass'] = '통과';
+            } else {
+              applierObj['isPass'] = '불합격';
+            }
+          }
+
+          applierObj['applyingWorkType'] = tempApplication.applyingWorkType;
+          applierObj['isRead'] = tempApplication.isRead;
+          applierObj['isChecked'] = tempApplication.isChecked;
+          applierObj['scoreSum'] = scoreSum;
+          applierList.push(applierObj);
         }
-        const returnObj = { total: gradingObj, score: scoreList };
+        const returnObj = {
+          total: gradingObj,
+          applier: { score: applierList },
+        };
         return returnObj;
       }
     } catch (err) {
       console.log(err);
       throw new InternalServerErrorException();
+    }
+  }
+
+  async applicantInfoByBusinessId(recruiter: Recruiter, businessId: string) {
+    const recruitment = await this.dataSource.manager.findOne(Recruitment, {
+      where: { recruiter: recruiter },
+      relations: [
+        'recruiter',
+        'upperCategoryGradingList',
+        'upperCategoryGradingList.gradingList',
+        'upperCategoryGradingList.requirementList',
+      ],
+    });
+
+    if (!recruitment) {
+      throw new NotFoundException('해당되는 recruitment가 존재하지 않습니다.');
+    } else if (recruitment.recruiter.businessId !== recruiter.businessId) {
+      throw new ForbiddenException('권한이 없습니다.');
+    } else {
+      const applier = await this.dataSource.manager.findOne(Applier, {
+        where: { businessId: businessId },
+        relations: [
+          'appliedList',
+          'appliedList.upperCategoryScoreBoardList',
+          'appliedList.upperCategoryScoreBoardList.scoreBoardList',
+          'paperReqList',
+          'historyList',
+        ],
+      });
+      delete (await applier).password;
+      let iso = false;
+
+      for (const paper of applier.paperReqList) {
+        if (paper.documentName.includes('ISO')) {
+          iso = true;
+          break;
+        }
+      }
+      const applierObj = applier;
+      applierObj['iso'] = iso;
+
+      return { recruitmentInfo: recruitment, applierInfo: applierObj };
     }
   }
 
@@ -238,5 +370,49 @@ export class ApplicationService {
 
   normalizeString(str: string): string {
     return str.replace(/\s/g, '').toLowerCase();
+  }
+
+  identifyingString(str: string): string {
+    const creditPattern = /신용/;
+    const gradePattern = /등급/;
+    const cashPattern = /현금/;
+    const flowPattern = /흐름/;
+
+    if (creditPattern.test(str) && gradePattern.test(str)) {
+      return 'creditGrade';
+    }
+
+    if (
+      gradePattern.test(str) &&
+      cashPattern.test(str) &&
+      flowPattern.test(str)
+    ) {
+      return 'cashFlowGrade';
+    }
+  }
+
+  changeGradeToScore(grade: string): number {
+    if (grade === 'AAA') return 24;
+    else if (grade === 'AA+') return 23;
+    else if (grade === 'AA0' || grade === 'AA') return 22;
+    else if (grade === 'AA-') return 21;
+    else if (grade === 'A+') return 20;
+    else if (grade === 'A0' || grade === 'A') return 19;
+    else if (grade === 'A-') return 18;
+    else if (grade === 'BBB+') return 17;
+    else if (grade === 'BBB' || grade === 'BBB0') return 16;
+    else if (grade === 'BBB-') return 15;
+    else if (grade === 'BB+') return 14;
+    else if (grade === 'BB0' || grade === 'BB') return 13;
+    else if (grade === 'BB-') return 12;
+    else if (grade === 'B+') return 11;
+    else if (grade === 'B0' || grade === 'B') return 10;
+    else if (grade === 'B-') return 9;
+    else if (grade === 'CCC+') return 8;
+    else if (grade === 'CCC0' || grade === 'CCC') return 7;
+    else if (grade === 'CCC-') return 6;
+    else if (grade === 'CC') return 5;
+    else if (grade === 'C') return 4;
+    else if (grade === 'D') return 2;
   }
 }

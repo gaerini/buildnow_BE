@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Recruitment } from './recruitment.entity';
+import { UpperCategoryGrading } from './upperCategoryGrading.entity';
 
 @Entity()
 export class Requirement {
@@ -9,6 +10,12 @@ export class Requirement {
   @Column()
   documentName: string;
 
-  @ManyToOne(() => Recruitment, (recruitment) => recruitment.requirementList)
-  recruitment: Recruitment;
+  @Column()
+  isEssential: boolean;
+
+  @ManyToOne(
+    () => UpperCategoryGrading,
+    (upperCategoryGrading) => upperCategoryGrading.requirementList,
+  )
+  upperCategoryGrading: UpperCategoryGrading;
 }

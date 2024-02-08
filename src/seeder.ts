@@ -32,6 +32,8 @@ import { FinanceSeeder } from './seeder/finance.seeder';
 import { ScoreBoardSeeder } from './seeder/scoreBoard.seeder';
 import { RecruitingWorkType } from './entities/recruitingWorkType.entity';
 import { Requirement } from './entities/requirement.entity';
+import { Condition } from './entities/condition.entity';
+import { ConditionSeeder } from './seeder/condition.seeder';
 
 const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
@@ -56,6 +58,7 @@ const dataSourceOptions: DataSourceOptions = {
     PossibleWorkType,
     RecruitingWorkType,
     Requirement,
+    Condition,
   ],
   synchronize: true,
 };
@@ -72,6 +75,7 @@ seeder({
 }).run([
   RecruiterSeeder,
   RecruitmentSeeder,
+  ConditionSeeder,
   GradingSeeder,
   ApplierSeeder,
   ApplicationSeeder,
