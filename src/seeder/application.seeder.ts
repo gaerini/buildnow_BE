@@ -38,6 +38,7 @@ export class ApplicationSeeder implements Seeder {
         isNew: true,
         isRecommended: false,
         recruitment: recruitment,
+        applyingWorkType: '철근',
         applier: applier1,
       });
       await queryRunner.manager.save(Application, newApplication1);
@@ -46,6 +47,7 @@ export class ApplicationSeeder implements Seeder {
         isNew: false,
         isRecommended: false,
         recruitment: recruitment,
+        applyingWorkType: '철골',
         applier: applier2,
       });
 
@@ -55,6 +57,7 @@ export class ApplicationSeeder implements Seeder {
         isNew: false,
         isRecommended: true,
         recruitment: recruitment,
+        applyingWorkType: '콘크리트',
         applier: applier3,
       });
 

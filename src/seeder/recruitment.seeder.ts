@@ -39,15 +39,6 @@ export class RecruitmentSeeder implements Seeder {
         testRecruitment,
       );
 
-      //requirement 엔티티 채우기
-      for (const documentName of requirementList) {
-        const document = this.dataSource.manager.create(Requirement, {
-          documentName: documentName,
-          recruitment: savedRecruitment,
-        });
-        await this.dataSource.manager.save(Requirement, document);
-      }
-
       //recruiting 엔티티 채우기
       for (const recruiting of recruitingWorkTypeList) {
         const workType = this.dataSource.manager.create(RecruitingWorkType, {

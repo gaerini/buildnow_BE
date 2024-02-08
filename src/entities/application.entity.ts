@@ -31,6 +31,9 @@ export class Application {
   @Column({ default: false })
   isChecked: boolean;
 
+  @Column()
+  applyingWorkType: string;
+
   @CreateDateColumn()
   appliedDate: Date;
 

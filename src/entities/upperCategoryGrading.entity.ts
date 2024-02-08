@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Recruitment } from './recruitment.entity';
 import { Grading } from './grading.entity';
+import { Requirement } from './requirement.entity';
 
 @Entity()
 export class UpperCategoryGrading {
@@ -26,4 +27,13 @@ export class UpperCategoryGrading {
     cascade: ['remove'],
   })
   gradingList: Grading[];
+
+  @OneToMany(
+    () => Requirement,
+    (requirement) => requirement.upperCategoryGrading,
+    {
+      cascade: ['remove'],
+    },
+  )
+  requirementList: Requirement[];
 }

@@ -40,6 +40,17 @@ export class ApplicationController {
     return await this.applicationService.findMyApplicants(recruiter);
   }
 
+  @Get('getApplierInfo/:businessId')
+  async applicantInfoByBusinessId(
+    @GetUser() recruiter: Recruiter,
+    @Param('businessId') businessId: string,
+  ): Promise<any> {
+    return await this.applicationService.applicantInfoByBusinessId(
+      recruiter,
+      businessId,
+    );
+  }
+
   @Post(':recruitmentId')
   async createApplicatoin(
     @Param('recruitmentId') recruitmentId: number,

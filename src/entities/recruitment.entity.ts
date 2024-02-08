@@ -11,6 +11,7 @@ import { Application } from './application.entity';
 import { UpperCategoryGrading } from './upperCategoryGrading.entity';
 import { RecruitingWorkType } from './recruitingWorkType.entity';
 import { Requirement } from './requirement.entity';
+import { Condition } from './condition.entity';
 
 @Entity()
 export class Recruitment {
@@ -46,6 +47,6 @@ export class Recruitment {
   )
   recruitingWorkTypeList: RecruitingWorkType[];
 
-  @OneToMany(() => Requirement, (requirement) => requirement.recruitment)
-  requirementList: Requirement[];
+  @OneToMany(() => Condition, (condition) => condition.recruitment)
+  conditionList: Condition[];
 }
