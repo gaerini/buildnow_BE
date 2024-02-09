@@ -218,6 +218,7 @@ export class ApplicationService {
           'historyList',
           'possibleWorkTypeList',
           'possibleWorkTypeList.capacityValueList',
+          'finance',
         ],
       });
       delete (await applier).password;
