@@ -20,7 +20,11 @@ export class RecruitmentService {
   findAllByRecruiter(recruiter: Recruiter): Promise<Recruitment[]> {
     return this.em.find(Recruitment, {
       where: { recruiter: recruiter },
-      relations: ['recruitingWorkTypeList', 'requirementList'],
+      relations: [
+        'recruitingWorkTypeList',
+        'upperCategoryGradingList',
+        'upperCategoryGradingList.requirementList',
+      ],
     });
   }
 
