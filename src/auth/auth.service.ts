@@ -1,4 +1,9 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  NotAcceptableException,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { RecruiterService } from './recruiter/recruiter.service';
 import { SignUpRecruiterDto } from './dto/signUp-recruiter.dto';
 import { SignInDto } from './dto/signIn.dto';
@@ -29,12 +34,22 @@ export class AuthService {
     signInDto: SignInDto,
   ): Promise<{ accessToken: string }> {
     const { businessId, password } = signInDto;
-    const recruiter = await this.recruiterService.findOne(businessId);
 
-    if (recruiter && (await bcrypt.compare(password, recruiter.password))) {
+    const recruiter = await this.recruiterService.findOne(businessId);
+    if (!recruiter) {
+      throw new UnauthorizedException('There is no businessId');
+    } else if (
+      recruiter &&
+      !(await bcrypt.compare(password, recruiter.password))
+    ) {
+      throw new UnauthorizedException('password is incorrect');
+    } else if (
+      recruiter &&
+      (await bcrypt.compare(password, recruiter.password))
+    ) {
       //creat user token
       const payload = { businessId, userType: 'recruiter' }; //user type을 지정함으로써 recruiter와 applier의 로그인 시 각각에 대한 jwt 발급을 관리할 수 있다.
-      const accessToken = await this.jwtService.sign(payload);
+      const accessToken = this.jwtService.sign(payload);
 
       return { accessToken };
     } else {
