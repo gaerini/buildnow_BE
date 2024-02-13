@@ -6,7 +6,7 @@ import { Application } from '../entities/application.entity';
 import { Recruitment } from '../entities/recruitment.entity';
 import { DataSource } from 'typeorm';
 import { InjectDataSource } from '@nestjs/typeorm';
-
+import applierData from './seedingData/applier.json';
 export class ApplicationSeeder implements Seeder {
   constructor(
     @InjectDataSource()
@@ -25,43 +25,26 @@ export class ApplicationSeeder implements Seeder {
         recruiter: recruiter,
       });
 
-      const applier1 = await queryRunner.manager.findOneBy(Applier, {
-        businessId: '23-56-678901',
-      });
-      const applier2 = await queryRunner.manager.findOneBy(Applier, {
-        businessId: '34-56-678901',
-      });
-      const applier3 = await queryRunner.manager.findOneBy(Applier, {
-        businessId: '45-56-678901',
-      });
-      const newApplication1 = queryRunner.manager.create(Application, {
-        isNew: true,
-        isRecommended: false,
-        recruitment: recruitment,
-        applyingWorkType: '철근',
-        applier: applier1,
-      });
-      await queryRunner.manager.save(Application, newApplication1);
+      for (const tempApplier of applierData) {
+        let workType = '';
+        for (const temp of tempApplier.possibleWorkType) {
+          if (temp.isApply) workType = temp.workType;
+        }
+        const applier = await this.dataSource.manager.findOne(Applier, {
+          where: { businessId: tempApplier.businessId },
+        });
+        const tempApplication = this.dataSource.manager.create(Application, {
+          isNew: tempApplier.isNew,
+          isRecommended: tempApplier.isRecommended,
+          isRead: false,
+          isChecked: false,
+          applyingWorkType: workType,
+          recruitment: recruitment,
+          applier: applier,
+        });
 
-      const newApplication2 = queryRunner.manager.create(Application, {
-        isNew: false,
-        isRecommended: false,
-        recruitment: recruitment,
-        applyingWorkType: '철골',
-        applier: applier2,
-      });
-
-      await queryRunner.manager.save(Application, newApplication2);
-
-      const newApplication3 = queryRunner.manager.create(Application, {
-        isNew: false,
-        isRecommended: true,
-        recruitment: recruitment,
-        applyingWorkType: '콘크리트',
-        applier: applier3,
-      });
-
-      await queryRunner.manager.save(Application, newApplication3);
+        await this.dataSource.manager.save(Application, tempApplication);
+      }
 
       await queryRunner.commitTransaction();
     } catch (err) {
