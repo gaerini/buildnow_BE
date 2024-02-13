@@ -68,30 +68,19 @@ export class ApplicationController {
     return;
   }
 
-  //   @Get('getScores/:applicationId')
-  //   async getScores(
-  //     @Param('applicationId') applicationId: number,
-  //   ): Promise<ScoreBoard[]> {
-  //     const scoreList = await this.applicationService.findScores(applicationId);
-  //     return scoreList;
-  //   }
+  @Patch('/isRead/:applierId')
+  async updateReadState(
+    @Param('applierId') applierId: string,
+    @GetUser() recruiter: Recruiter,
+  ): Promise<any> {
+    return await this.applicationService.updateReadState(applierId, recruiter);
+  }
 
-  //   @Post('insertScores/:applicationId')
-  //   async insertScores(
-  //     @Param('applicationId') applicationId: number,
-  //     @Body() newScores: NewScores,
-  //   ): Promise<void> {
-  //     await this.applicationService.insertScores(applicationId, newScores);
-  //     return;
-  //   }
-
-  //   @Patch('updateScores/:applicationId')
-  //   async updateScores(
-  //     @Param('applicationId') applicationId: number,
-  //     @Body() updateScoresDto: UpdateScoresDto,
-  //   ): Promise<void> {
-  //     console.log(updateScoresDto);
-  //     await this.applicationService.updateScores(applicationId, updateScoresDto);
-  //     return;
-  //   }
+  @Patch('/isChecked/:applierId')
+  async updateCheckState(
+    @Param('applierId') applierId: string,
+    @GetUser() recruiter: Recruiter,
+  ): Promise<any> {
+    return await this.applicationService.updateCheckState(applierId, recruiter);
+  }
 }
