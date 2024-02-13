@@ -31,7 +31,7 @@ export class RecruitmentSeeder implements Seeder {
       console.log(recruiter);
       const testRecruitment = this.dataSource.manager.create(Recruitment, {
         deadline: '20241212',
-        threshold: 90,
+        threshold: 85,
         recruiter: recruiter,
       });
       const savedRecruitment = await this.dataSource.manager.save(
