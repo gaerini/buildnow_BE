@@ -2,10 +2,10 @@ import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller()
-@UseGuards(AuthGuard())
+@UseGuards(AuthGuard('jwt'))
 export class AppController {
-    @Get()
-    hello(): string {
-        return "hello";
-    }
+  @Get()
+  hello(): string {
+    return 'hello';
+  }
 }

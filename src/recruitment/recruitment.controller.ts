@@ -18,7 +18,7 @@ import { Recruiter } from 'src/auth/recruiter/recruiter.entity';
 import { RecruiterGuard } from 'src/auth/recruiter.guard';
 
 @Controller('recruitment')
-@UseGuards(AuthGuard(), RecruiterGuard)
+@UseGuards(AuthGuard('jwt'))
 export class RecruitmentController {
   private logger = new Logger('RecruitmentController');
   constructor(private recruitmentService: RecruitmentService) {}

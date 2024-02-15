@@ -25,6 +25,12 @@ export class Recruiter {
   @Column()
   companyName: string;
 
+  @Column({ nullable: true })
+  lastLoginDate: Date;
+
+  @Column({ nullable: true })
+  refreshToken: string;
+
   @OneToMany((type) => Recruitment, (recruitment) => recruitment.recruiter, {
     cascade: true,
   })
