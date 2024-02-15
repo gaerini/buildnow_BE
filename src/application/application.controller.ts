@@ -22,7 +22,7 @@ import { Recruiter } from 'src/auth/recruiter/recruiter.entity';
 import { Recruitment } from 'src/entities/recruitment.entity';
 
 @Controller('application')
-@UseGuards(AuthGuard())
+@UseGuards(AuthGuard('jwt'))
 export class ApplicationController {
   private logger = new Logger('application');
 

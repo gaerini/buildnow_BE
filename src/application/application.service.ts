@@ -170,13 +170,16 @@ export class ApplicationService {
             if (recruitment.threshold <= scoreSum) {
               applierObj['isPass'] = '통과';
             } else {
-              applierObj['isPass'] = '불합격';
+              applierObj['isPass'] = '탈락';
             }
           }
-
+          if (applierObj['isPass'] === '미달') {
+            applierObj['isChecked'] = true;
+          } else {
+            applierObj['isChecked'] = tempApplication.isChecked;
+          }
           applierObj['applyingWorkType'] = tempApplication.applyingWorkType;
           applierObj['isRead'] = tempApplication.isRead;
-          applierObj['isChecked'] = tempApplication.isChecked;
           applierObj['scoreSum'] = scoreSum;
           applierList.push(applierObj);
         }

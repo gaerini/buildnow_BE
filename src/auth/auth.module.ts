@@ -8,20 +8,35 @@ import { RecruiterService } from './recruiter/recruiter.service';
 import { JwtModule } from '@nestjs/jwt';
 import { Constant } from '../../auth.constant';
 import { PassportModule } from '@nestjs/passport';
-import { JwtStrategy } from './jwt.strategy';
+import { JwtStrategy } from './strategy/jwt.strategy';
 import { Applier } from './applier/applier.entity';
 import { ApplierService } from './applier/applier.service';
+import { LocalStrategy } from './strategy/local.strategy';
+import { RefreshStrategy } from './strategy/refresh.strategy';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Recruiter, Recruitment, Applier]),
-JwtModule.register({
-    secret: Constant.secret,
-    signOptions: {
-        expiresIn: '3600s',
-    },
-}), PassportModule.register({ defaultStrategy: 'jwt'})],
-    controllers:[AuthController],
-    providers: [AuthService, RecruiterService, ApplierService, JwtStrategy],
-    exports: [JwtStrategy, PassportModule], //다른 모듈에서도 사용해야하므로 추출해야함
+  imports: [
+    TypeOrmModule.forFeature([Recruiter, Recruitment, Applier]),
+    JwtModule.register({
+      secret: Constant.secret,
+    }),
+    PassportModule,
+  ],
+  controllers: [AuthController],
+  providers: [
+    AuthService,
+    RecruiterService,
+    ApplierService,
+    JwtStrategy,
+    LocalStrategy,
+    RefreshStrategy,
+  ],
+  exports: [
+    JwtStrategy,
+    PassportModule,
+    LocalStrategy,
+    RefreshStrategy,
+    JwtModule,
+  ], //다른 모듈에서도 사용해야하므로 추출해야함
 })
 export class AuthModule {}

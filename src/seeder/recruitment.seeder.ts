@@ -7,8 +7,6 @@ import { DataSource, EntityManager } from 'typeorm';
 import { UpperCategoryGrading } from '../entities/upperCategoryGrading.entity';
 import { Application } from '../entities/application.entity';
 import { Grading } from '../entities/grading.entity';
-import requirementList from './seedingData/requirement.json';
-import { Requirement } from '../entities/requirement.entity';
 import recruitingWorkTypeList from './seedingData/recruitingWorkType.json';
 import { RecruitingWorkType } from '../entities/recruitingWorkType.entity';
 
