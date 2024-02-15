@@ -19,7 +19,11 @@ async function bootstrap() {
   app.use(cookieParser()); // cookie-parser 미들웨어 적용
 
   app.enableCors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'http://ec2-43-200-171-250.ap-northeast-2.compute.amazonaws.com:3000',
+    ],
     credentials: true,
     exposedHeaders: ['Authorization'],
   });
