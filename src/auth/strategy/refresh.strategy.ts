@@ -18,7 +18,7 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
         (request: Request) => {
           const requestShow = request;
           console.log(requestShow);
-          return request.cookies.refreshToken;
+          return request.body.refreshToken;
         },
       ]),
       secretOrKey: Constant.secret,
@@ -27,7 +27,8 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
     });
   }
   async validate(request: Request, payload: any) {
-    const refreshToken = request.cookies['refreshToken'];
+    const refreshToken = request.body.refreshToken;
+    console.log(payload);
     const { businessId, userType } = payload;
     const recruiter = await this.dataSource.manager.findOne(Recruiter, {
       where: { businessId: businessId },
