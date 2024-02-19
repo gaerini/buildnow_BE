@@ -23,7 +23,7 @@ async function bootstrap() {
       'http://localhost:3000',
       'http://localhost:3001',
       'http://ec2-43-200-171-250.ap-northeast-2.compute.amazonaws.com:3000',
-      'https://buildnow-v1-agrvpehbv-jiho-kims-projects.vercel.app/',
+      'https://buildnow-v1-agrvpehbv-jiho-kims-projects.vercel.app',
     ],
     credentials: true,
     exposedHeaders: ['Authorization'],
