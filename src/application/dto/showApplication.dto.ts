@@ -1,1 +1,3 @@
-export class ShowApplicationDto {}
+export class ShowApplicationDto {
+    
+}
